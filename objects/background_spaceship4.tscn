@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgtc7ukocitmr"]
+
+[ext_resource type="Script" uid="uid://nvahofn0d52t" path="res://objects/background_spaceship.gd" id="1_cp7fv"]
+[ext_resource type="PackedScene" uid="uid://de6b5hwvlfepr" path="res://models/Spaceship (4).glb" id="2_cp7fv"]
+
+[node name="BackgroundSpaceship" type="Node3D"]
+script = ExtResource("1_cp7fv")
+
+[node name="Root Scene" parent="." instance=ExtResource("2_cp7fv")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
