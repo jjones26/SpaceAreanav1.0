@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://r7rt7pth4u7o" path="res://objects/wall_low.tscn" id="5_6vel1"]
 [ext_resource type="PackedScene" uid="uid://c71evdjblk5wp" path="res://objects/wall_high.tscn" id="7_cabne"]
 [ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="7_wggef"]
-[ext_resource type="PackedScene" uid="uid://d2g78tpqbyf5g" path="res://objects/enemy.tscn" id="8_7ty2f"]
 [ext_resource type="PackedScene" uid="uid://b8bx6ou8syltw" path="res://objects/wall_high_field.tscn" id="9_vxglm"]
 [ext_resource type="PackedScene" uid="uid://c7s4mk2q7insp" path="res://objects/rock_large.tscn" id="10_yq6so"]
 [ext_resource type="PackedScene" uid="uid://bqiijctxnttfq" path="res://objects/meteor_detailed_2.tscn" id="11_dp3eg"]
@@ -31,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://das5fosq6auoe" path="res://models/grass-small.glb" id="28_yq6so"]
 [ext_resource type="PackedScene" uid="uid://beaer7x07yif6" path="res://models/grass.glb" id="29_fv21b"]
 [ext_resource type="Script" uid="uid://cp18et5vurv4o" path="res://scripts/health_pack_spawner_manager.gd" id="31_tel4y"]
+[ext_resource type="Script" uid="uid://c6sdqtxlo4je0" path="res://scripts/enemy_spawn_manager.gd" id="32_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="32_qkpxi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
@@ -91,22 +91,6 @@ label_settings = SubResource("LabelSettings_fpmwk")
 vertical_alignment = 2
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, -6)
-player = NodePath("../../Player")
-
-[node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 2.5, 1.5)
-player = NodePath("../../Player")
-
-[node name="enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.5, 5.5, 9)
-player = NodePath("../../Player")
-
-[node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 15.5, 4, -7.5)
-player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
 
@@ -223,27 +207,27 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 [node name="Planets" type="Node" parent="."]
 
 [node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(-449.9052, 0, 218.14024, 0, 500, 0, -218.14024, 0, -449.9052, 196.51334, 115.02238, -446.83206)
+transform = Transform3D(498.14468, 0, 43.0314, 0, 500, 0, -43.0314, 0, 498.14468, 196.51334, 115.02238, -446.83206)
 
 [node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
-transform = Transform3D(200.00044, 0, 0.00089327793, 0, 200, 0, -0.00089327793, 0, 200.00044, -249.91281, 105.15225, -658.0058)
+transform = Transform3D(181.72285, 0, 83.52832, 0, 200, 0, -83.52832, 0, 181.72285, -249.91281, 105.15225, -658.0058)
 skeleton = NodePath("../..")
 
 [node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(-780.5296, 0, -175.42038, 0, 800, 0, 175.42038, 0, -780.5296, -1254.7994, 698.4205, 556.4917)
+transform = Transform3D(795.363, 0, 86.002815, 0, 800, 0, -86.002815, 0, 795.363, -1254.7994, 698.4205, 556.4917)
 skeleton = NodePath("../..")
 
 [node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(-341.92725, 0, 165.78624, 0, 380, 0, -165.78624, 0, -341.92725, -3137.1943, 898.27765, 0)
+transform = Transform3D(378.58923, 0, 32.7038, 0, 380, 0, -32.7038, 0, 378.58923, -3137.1943, 898.27765, 0)
 
 [node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(-341.92786, 0, 165.78654, 0, 380, 0, -165.78654, 0, -341.92786, -2861.6575, 800.9215, -1114.5828)
+transform = Transform3D(378.5899, 0, 32.703857, 0, 380, 0, -32.703857, 0, 378.5899, -2861.6575, 800.9215, -1114.5828)
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(604.87897, 0, 2425.7205, 0, 2499.997, 0, -2425.7205, 0, 604.87897, 0, 1750, 4000)
+transform = Transform3D(1995.8376, 0, 1505.5332, 0, 2499.997, 0, -1505.5332, 0, 1995.8376, 0, 1750, 4000)
 
 [node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(-341.92807, 0, 165.78664, 0, 380, 0, -165.78664, 0, -341.92807, 1582.5, 291.89026, 620.002)
+transform = Transform3D(378.59012, 0, 32.703876, 0, 380, 0, -32.703876, 0, 378.59012, 1582.5, 291.89026, 620.002)
 
 [node name="MeteorsClose" type="Node" parent="."]
 
@@ -767,5 +751,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 3, 21.5)
 
 [node name="HealthPackSpawner4" type="Node3D" parent="HealthPackSpawnerManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.567, 3, -21.587)
+
+[node name="EnemySpawnManager" type="Node3D" parent="."]
+script = ExtResource("32_5q0nq")
+
+[node name="EnemySpawner1" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.563684, 0, 7.2850804)
+
+[node name="EnemySpawner2" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.563684, 3.5633268, 1.0811725)
+
+[node name="EnemySpawner3" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.563684, 1.2553, -8.811802)
+
+[node name="EnemySpawner4" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.597306, 1.2553, -19.11512)
+
+[node name="EnemySpawner5" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12304306, 2.026063, -19.11512)
+
+[node name="EnemySpawner6" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.572436, 2.026063, -19.11512)
+
+[node name="EnemySpawner7" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.760021, 0.6090083, -14.954016)
+
+[node name="EnemySpawner8" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.760021, 0.6090083, -9.286369)
+
+[node name="EnemySpawner9" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.169737, 3.4588065, -0.2829883)
+
+[node name="EnemySpawner10" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.760021, 0.11385965, 6.5251513)
+
+[node name="EnemySpawner11" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.505262, 0.9378536, -0.20745945)
+
+[node name="EnemySpawner12" type="Node3D" parent="EnemySpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.360582, 0.9378536, -0.20745945)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]

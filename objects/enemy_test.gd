@@ -1,6 +1,6 @@
-extends Node3D
+extends CharacterBody3D
 
-@export var player: Node3D
+var player: Node3D
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -20,22 +20,30 @@ signal died
 
 func _ready():
 	target_position = global_position
+	player = get_tree().get_first_node_in_group("player")
 
 
-func _process(delta):
-	if player == null:
+func _physics_process(delta):
+	if player == null or destroyed:
 		return
-	self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
-	
-	#move towards player
-	var direction = (player.global_position - global_position).normalized()
-	var distance = global_position.distance_to(player.global_position)
+	look_at(player.global_position + Vector3(0, 0.5, 0), Vector3.UP, true)
+	var to_player = player.global_position - global_position
+	var distance = to_player.length()
+	var direction = to_player.normalized()
+	# Horizontal movement
 	if distance > 2.0:
-		target_position += direction * move_speed * delta
-	
-	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
+	else:
+		velocity.x = 0
+		velocity.z = 0
+	# Vertical pursuit + hover
+	velocity.y = clamp(direction.y, -1.0, 1.0) * move_speed
 	time += delta
-	position = target_position
+	velocity.y += cos(time * 5.0) * hover_strength
+	move_and_slide()
+
+
 
 
 func _post_spawn_setup(spawn_position: Vector3, player_ref: Node3D):
