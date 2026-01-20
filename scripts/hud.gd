@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var score_label = $ScoreLabel
+@onready var high_score_label: Label = $HighScoreLabel
 
 
 func _on_health_updated(health):
@@ -8,10 +9,14 @@ func _on_health_updated(health):
 
 
 func _ready():
-	# Connect to the global signal
 	GameManager.score_changed.connect(_on_score_updated)
-	# Set initial score
+	GameManager.high_score_changed.connect(_on_high_score_updated)
+	high_score_label.text = "High Score: " + str(GameManager.high_score)
 	score_label.text = "Eliminations: " + str(GameManager.score)
+
+
+func _on_high_score_updated(new_high):
+	high_score_label.text = "High Score: " + str(new_high)
 
 
 func _on_score_updated(new_score):

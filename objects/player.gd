@@ -284,9 +284,16 @@ func damage(amount):
 		damage_flash.visible = true
 		await get_tree().create_timer(.1).timeout
 		damage_flash.visible = false
-	if health < 0:
-		GameManager.reset_score()
-		get_tree().reload_current_scene() # Reset when out of health
+	if health <= 0:
+		die()
+
+
+func die() -> void:
+	print("Player died! Current Score: ", GameManager.score)
+	print("High Score before save: ", GameManager.high_score)
+	GameManager.save_high_score()
+	GameManager.reset_score()
+	get_tree().reload_current_scene() # Reset when out of health
 
 #healing
 func heal(amount: int) -> void:

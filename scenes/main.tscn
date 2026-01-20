@@ -81,10 +81,10 @@ scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(64, 64)
 
 [node name="Health" type="Label" parent="HUD"]
-offset_left = 48.0
-offset_top = 627.0
-offset_right = 138.0
-offset_bottom = 672.0
+offset_left = 32.0
+offset_top = 640.0
+offset_right = 122.0
+offset_bottom = 685.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "100%"
@@ -92,13 +92,29 @@ label_settings = SubResource("LabelSettings_fpmwk")
 vertical_alignment = 2
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 35.0
-grow_horizontal = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 190.0
+offset_bottom = 51.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Eliminations: "
+label_settings = SubResource("LabelSettings_fpmwk")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HighScoreLabel" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 16.0
+offset_right = -18.0
+offset_bottom = 51.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "High Score:"
 label_settings = SubResource("LabelSettings_fpmwk")
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -109,10 +125,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -288.0
-offset_top = -240.0
-offset_right = -15.0
-offset_bottom = -18.0
+offset_left = -272.0
+offset_top = -232.0
+offset_right = 1.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
@@ -240,27 +256,27 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 [node name="Planets" type="Node" parent="."]
 
 [node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(-245.44858, 0, 435.60858, 0, 500, 0, -435.60858, 0, -245.44858, 196.51334, 115.02238, -446.83206)
+transform = Transform3D(489.35452, 0, -102.62548, 0, 500, 0, 102.62548, 0, 489.35452, 196.51334, 115.02238, -446.83206)
 
 [node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
 transform = Transform3D(200.00044, 0, 0.00089327793, 0, 200, 0, -0.00089327793, 0, 200.00044, -249.91281, 105.15225, -658.0058)
 skeleton = NodePath("../..")
 
 [node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(-687.52075, 0, 409.04028, 0, 800, 0, -409.04028, 0, -687.52075, -1254.7994, 698.4205, 556.4917)
+transform = Transform3D(-773.43854, 0, 204.42986, 0, 800, 0, -204.42986, 0, -773.43854, -1254.7994, 698.4205, 556.4917)
 skeleton = NodePath("../..")
 
 [node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(-186.54057, 0, 331.06192, 0, 380, 0, -331.06192, 0, -186.54057, -3137.1943, 898.27765, 0)
+transform = Transform3D(371.90875, 0, -77.99522, 0, 380, 0, 77.99522, 0, 371.90875, -3137.1943, 898.27765, 0)
 
 [node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(-186.5409, 0, 331.0625, 0, 380, 0, -331.0625, 0, -186.5409, -2861.6575, 800.9215, -1114.5828)
+transform = Transform3D(371.9094, 0, -77.99535, 0, 380, 0, 77.99535, 0, 371.9094, -2861.6575, 800.9215, -1114.5828)
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(-2492.2803, 0, 196.30682, 0, 2499.997, 0, -196.30682, 0, -2492.2803, 0, 1750, 4000)
+transform = Transform3D(50.91079, 0, -2499.4812, 0, 2499.997, 0, 2499.4812, 0, 50.91079, 0, 1750, 4000)
 
 [node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(-186.54099, 0, 331.06265, 0, 380, 0, -331.06265, 0, -186.54099, 1582.5, 291.89026, 620.002)
+transform = Transform3D(371.90958, 0, -77.99539, 0, 380, 0, 77.99539, 0, 371.90958, 1582.5, 291.89026, 620.002)
 
 [node name="MeteorsClose" type="Node" parent="."]
 
