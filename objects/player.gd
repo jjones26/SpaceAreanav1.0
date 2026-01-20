@@ -23,6 +23,7 @@ var rotation_target: Vector3
 var input_mouse: Vector2
 
 var health: int = 100
+var max_health: int = 100
 var gravity := 0.0
 
 var previously_floored := false
@@ -95,7 +96,7 @@ func _process(delta):
 	
 	# Falling/respawning
 	
-	if position.y < -10:
+	if position.y < -20:
 		get_tree().reload_current_scene()
 
 # Mouse movement
@@ -286,6 +287,10 @@ func damage(amount):
 	if health < 0:
 		get_tree().reload_current_scene() # Reset when out of health
 
+#healing
+func heal(amount: int) -> void:
+	health = min(health + amount, max_health)
+	health_updated.emit(health)
 
 # Create a random knockback vector
 static func random_vec2(_min: Vector2, _max: Vector2) -> Vector2:
