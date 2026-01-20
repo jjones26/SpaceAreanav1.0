@@ -132,6 +132,12 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 [node name="platform-large-grass3" parent="Level" instance=ExtResource("7_wggef")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -6, 1, 2.5)
 
+[node name="platform-large-grass6" parent="Level" instance=ExtResource("7_wggef")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -20, 2, 0)
+
+[node name="platform-large-grass7" parent="Level" instance=ExtResource("7_wggef")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 21, 2, 0)
+
 [node name="platform-large-grass5" parent="Level" instance=ExtResource("7_wggef")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 12, 2.5, -5)
 
@@ -140,6 +146,9 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 
 [node name="platform-large-grass" parent="Level" instance=ExtResource("7_wggef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="platform-large-grass8" parent="Level" instance=ExtResource("7_wggef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 
 [node name="Decoration" type="Node" parent="."]
 
@@ -190,27 +199,27 @@ visible = false
 [node name="Planets" type="Node" parent="."]
 
 [node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(272.9892, 0, 418.89938, 0, 500, 0, -418.89938, 0, 272.9892, 196.51334, 115.02238, -446.83206)
+transform = Transform3D(499.99872, 0, 1.0287119, 0, 500, 0, -1.0287119, 0, 499.99872, 196.51334, 115.02238, -446.83206)
 
 [node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
-transform = Transform3D(50.21866, 0, -193.59303, 0, 200, 0, 193.59303, 0, 50.21866, -249.91281, 105.15225, -658.0058)
+transform = Transform3D(199.98985, 0, 2.0573947, 0, 200, 0, -2.0573947, 0, 199.98985, -249.91281, 105.15225, -658.0058)
 skeleton = NodePath("../..")
 
 [node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(258.6641, 0, 757.0282, 0, 800, 0, -757.0282, 0, 258.6641, -1254.7994, 698.4205, 556.4917)
+transform = Transform3D(799.99664, 0, 2.0574224, 0, 800, 0, -2.0574224, 0, 799.99664, -1254.7994, 698.4205, 556.4917)
 skeleton = NodePath("../..")
 
 [node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(207.4714, 0, 318.36295, 0, 380, 0, -318.36295, 0, 207.4714, -3137.1943, 898.27765, 0)
+transform = Transform3D(379.99832, 0, 0.78181964, 0, 380, 0, -0.78181964, 0, 379.99832, -3137.1943, 898.27765, 0)
 
 [node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(207.47176, 0, 318.3635, 0, 380, 0, -318.3635, 0, 207.47176, -2861.6575, 800.9215, -1114.5828)
+transform = Transform3D(379.99896, 0, 0.78182095, 0, 380, 0, -0.78182095, 0, 379.99896, -2861.6575, 800.9215, -1114.5828)
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(984.3333, 0, 2298.0615, 0, 2499.997, 0, -2298.0615, 0, 984.3333, 0, 1750, 4000)
+transform = Transform3D(2499.702, 0, 38.575207, 0, 2499.997, 0, -38.575207, 0, 2499.702, 0, 1750, 4000)
 
 [node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(207.47183, 0, 318.36362, 0, 380, 0, -318.36362, 0, 207.47183, 1582.5, 291.89026, 620.002)
+transform = Transform3D(379.99915, 0, 0.78182137, 0, 380, 0, -0.78182137, 0, 379.99915, 1582.5, 291.89026, 620.002)
 
 [node name="MeteorsClose" type="Node" parent="."]
 
