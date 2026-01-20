@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Space Arena"
-config/tags=PackedStringArray("starterkit")
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.92549, 0.92549, 0.960784, 1)
@@ -21,6 +20,7 @@ config/icon="uid://bc3a8d6d6qj64"
 [autoload]
 
 Audio="*res://scripts/audio.gd"
+GameManager="*res://scripts/game_manager.gd"
 
 [display]
 

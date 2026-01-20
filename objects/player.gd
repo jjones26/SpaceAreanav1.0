@@ -285,6 +285,7 @@ func damage(amount):
 		await get_tree().create_timer(.1).timeout
 		damage_flash.visible = false
 	if health < 0:
+		GameManager.reset_score()
 		get_tree().reload_current_scene() # Reset when out of health
 
 #healing
