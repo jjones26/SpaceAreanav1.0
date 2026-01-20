@@ -33,4 +33,11 @@ frame = 2
 wait_time = 0.25
 autostart = true
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2582517, 0.31417006)
+light_color = Color(1, 0, 0, 1)
+omni_range = 0.43037003
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="enemy-flying"]

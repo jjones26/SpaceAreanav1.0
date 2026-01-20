@@ -256,27 +256,27 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 [node name="Planets" type="Node" parent="."]
 
 [node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(489.35452, 0, -102.62548, 0, 500, 0, 102.62548, 0, 489.35452, 196.51334, 115.02238, -446.83206)
+transform = Transform3D(498.87875, 0, 33.46426, 0, 500, 0, -33.46426, 0, 498.87875, 196.51334, 115.02238, -446.83206)
 
 [node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
 transform = Transform3D(200.00044, 0, 0.00089327793, 0, 200, 0, -0.00089327793, 0, 200.00044, -249.91281, 105.15225, -658.0058)
 skeleton = NodePath("../..")
 
 [node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(-773.43854, 0, 204.42986, 0, 800, 0, -204.42986, 0, -773.43854, -1254.7994, 698.4205, 556.4917)
+transform = Transform3D(-797.19684, 0, -66.90214, 0, 800, 0, 66.90214, 0, -797.19684, -1254.7994, 698.4205, 556.4917)
 skeleton = NodePath("../..")
 
 [node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(371.90875, 0, -77.99522, 0, 380, 0, 77.99522, 0, 371.90875, -3137.1943, 898.27765, 0)
+transform = Transform3D(379.14713, 0, 25.43279, 0, 380, 0, -25.43279, 0, 379.14713, -3137.1943, 898.27765, 0)
 
 [node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(371.9094, 0, -77.99535, 0, 380, 0, 77.99535, 0, 371.9094, -2861.6575, 800.9215, -1114.5828)
+transform = Transform3D(379.1478, 0, 25.432837, 0, 380, 0, -25.432837, 0, 379.1478, -2861.6575, 800.9215, -1114.5828)
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(50.91079, 0, -2499.4812, 0, 2499.997, 0, 2499.4812, 0, 50.91079, 0, 1750, 4000)
+transform = Transform3D(2191.146, 0, 1203.6932, 0, 2499.997, 0, -1203.6932, 0, 2191.146, 0, 1750, 4000)
 
 [node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(371.90958, 0, -77.99539, 0, 380, 0, 77.99539, 0, 371.90958, 1582.5, 291.89026, 620.002)
+transform = Transform3D(379.14798, 0, 25.432848, 0, 380, 0, -25.432848, 0, 379.14798, 1582.5, 291.89026, 620.002)
 
 [node name="MeteorsClose" type="Node" parent="."]
 
