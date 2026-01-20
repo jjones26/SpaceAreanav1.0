@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqiijctxnttfq"]
+
+[ext_resource type="PackedScene" uid="uid://cfyf52uh757t3" path="res://models/kenney_space_kit_models/meteor_detailed.glb" id="1_nxsh7"]
+[ext_resource type="Script" uid="uid://bfgpo8fvf136p" path="res://objects/cloud.gd" id="2_15jyl"]
+
+[node name="meteor_detailed2" instance=ExtResource("1_nxsh7")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("2_15jyl")
