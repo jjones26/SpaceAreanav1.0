@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=62 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -12,13 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c7s4mk2q7insp" path="res://objects/rock_large.tscn" id="10_yq6so"]
 [ext_resource type="PackedScene" uid="uid://bqiijctxnttfq" path="res://objects/meteor_detailed_2.tscn" id="11_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://dboxngeco31t4" path="res://objects/rock.tscn" id="11_fv21b"]
-[ext_resource type="PackedScene" uid="uid://yo6lqoksa53k" path="res://addons/naejimer_3d_planet_generator/scenes/planet_terrestrial.tscn" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://tnvbntvduo2b" path="res://addons/naejimer_3d_planet_generator/scenes/planet_no_atmosphere.tscn" id="12_trceg"]
-[ext_resource type="PackedScene" uid="uid://c1ml4yvlgnbbv" path="res://addons/naejimer_3d_planet_generator/scenes/planet_gaseous.tscn" id="13_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://biy37ccrqck53" path="res://addons/naejimer_3d_planet_generator/scenes/planet_ice.tscn" id="14_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://dneumird5vcjw" path="res://addons/naejimer_3d_planet_generator/scenes/planet_lava.tscn" id="15_muem4"]
+[ext_resource type="Script" uid="uid://l7s7uybri0ek" path="res://objects/planetsspinning.gd" id="11_yq6so"]
 [ext_resource type="PackedScene" uid="uid://c1lxtdgeggnej" path="res://addons/naejimer_3d_planet_generator/scenes/star.tscn" id="16_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://dbexddi1rwbt4" path="res://addons/naejimer_3d_planet_generator/scenes/planet_sand.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://bgcsi4pm7m7c7" path="res://models/Spaceship.glb" id="19_0ld40"]
 [ext_resource type="Script" uid="uid://drtdudhrijugu" path="res://models/spaceship.gd" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bwgwd5ue8i2bt" path="res://models/platform.glb" id="21_yc10j"]
@@ -40,6 +35,94 @@ font = ExtResource("3_w27de")
 font_size = 30
 outline_size = 12
 outline_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv21b"]
+albedo_color = Color(0.5411765, 0.5411765, 0.5411765, 1)
+emission_energy_multiplier = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_tel4y"]
+material = SubResource("StandardMaterial3D_fv21b")
+radius = 240.0
+height = 480.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkpxi"]
+albedo_color = Color(0.9019608, 0.8392157, 0.5647059, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5q0nq"]
+material = SubResource("StandardMaterial3D_qkpxi")
+radius = 600.0
+height = 1200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgi5k"]
+albedo_color = Color(0.41960785, 0.7137255, 0.9843137, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j8jky"]
+material = SubResource("StandardMaterial3D_dgi5k")
+radius = 250.0
+height = 500.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_kmb1v"]
+radius = 100.0
+height = 200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+albedo_color = Color(0.75686276, 0.26666668, 0.05490196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pibwh"]
+material = SubResource("StandardMaterial3D_fuf3a")
+radius = 330.0
+height = 670.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6pm6"]
+albedo_color = Color(0.69803923, 0.5137255, 0.3882353, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5he1u"]
+material = SubResource("StandardMaterial3D_c6pm6")
+radius = 700.0
+height = 1400.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5poiv"]
+albedo_color = Color(0.8901961, 0.75686276, 0.43529412, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2cjbq"]
+material = SubResource("StandardMaterial3D_5poiv")
+radius = 600.0
+height = 1200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chjal"]
+albedo_color = Color(0.95686275, 0.90588236, 0.6784314, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_cjqg0"]
+material = SubResource("StandardMaterial3D_chjal")
+inner_radius = 600.0
+outer_radius = 1200.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq6so"]
+albedo_color = Color(0.49803922, 0.85882354, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fv21b"]
+material = SubResource("StandardMaterial3D_yq6so")
+radius = 500.0
+height = 1000.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tel4y"]
+albedo_color = Color(0.105882354, 0.24705882, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qkpxi"]
+material = SubResource("StandardMaterial3D_tel4y")
+radius = 250.0
+height = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q0nq"]
+albedo_color = Color(1, 0.62352943, 0.10980392, 1)
+emission_enabled = true
+emission = Color(1, 0.69803923, 0, 1)
+emission_energy_multiplier = 0.75
+
+[sub_resource type="SphereMesh" id="SphereMesh_dgi5k"]
+material = SubResource("StandardMaterial3D_5q0nq")
+radius = 1200.0
+height = 2400.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j8jky"]
 
@@ -275,6 +358,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 14)
 [node name="platform7" parent="Level" instance=ExtResource("5_3s40e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 2, 21.5)
 
+[node name="platform15" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 4, 21.5)
+
+[node name="platform19" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 4, 11.5)
+
+[node name="platform20" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 4, 11.5)
+
+[node name="platform21" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 4, -11.5)
+
+[node name="platform22" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 4, -11.5)
+
+[node name="platform16" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 4, 21.5)
+
+[node name="platform17" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 4, -21.5)
+
+[node name="platform18" parent="Level" instance=ExtResource("5_3s40e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 4, -21.5)
+
 [node name="platform8" parent="Level" instance=ExtResource("5_3s40e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 2, -21.5)
 
@@ -339,28 +446,60 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 
 [node name="Planets" type="Node" parent="."]
 
-[node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(-363.3686, 0, -343.45764, 0, 500, 0, 343.45764, 0, -363.3686, 196.51334, 217.29822, -446.83206)
+[node name="Mercury" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 959, 1823, 2270)
+mesh = SubResource("SphereMesh_tel4y")
+script = ExtResource("11_yq6so")
 
-[node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
-transform = Transform3D(200.00044, 0, 0.00089327793, 0, 200, 0, -0.00089327793, 0, 200.00044, -249.91281, 419.47845, -658.0058)
-skeleton = NodePath("../..")
+[node name="Venus" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2195, 2085, 2649)
+mesh = SubResource("SphereMesh_5q0nq")
+script = ExtResource("11_yq6so")
 
-[node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(789.63477, 0, 128.35764, 0, 800, 0, -128.35764, 0, 789.63477, -1254.7994, 698.4205, 556.4917)
-skeleton = NodePath("../..")
+[node name="Earth" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 601, 433, -340)
+mesh = SubResource("SphereMesh_j8jky")
+script = ExtResource("11_yq6so")
 
-[node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(-276.1596, 0, -261.0273, 0, 380, 0, 261.0273, 0, -276.1596, -3137.1943, 898.27765, 0)
+[node name="Moon" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 529, -603)
+mesh = SubResource("SphereMesh_kmb1v")
+script = ExtResource("11_yq6so")
 
-[node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(-276.1601, 0, -261.02777, 0, 380, 0, 261.02777, 0, -276.1601, -2861.6575, 800.9215, -1114.5828)
+[node name="Mars" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1810, 1115, 1086)
+mesh = SubResource("SphereMesh_pibwh")
+script = ExtResource("11_yq6so")
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(1419.7123, 0, 2057.7695, 0, 2499.997, 0, -2057.7695, 0, 1419.7123, 0, 1750, 4000)
+transform = Transform3D(90.824524, 0, 2498.3494, 0, 2499.997, 0, -2498.3494, 0, 90.824524, 0, 2495, 4000)
+visible = false
 
-[node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(-276.16022, 0, -261.0279, 0, 380, 0, 261.0279, 0, -276.16022, 1582.5, 291.89026, 620.002)
+[node name="Jupiter" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1011, 827, -2789)
+mesh = SubResource("SphereMesh_5he1u")
+script = ExtResource("11_yq6so")
+
+[node name="Saturn" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 521, 1792, -3995)
+mesh = SubResource("SphereMesh_2cjbq")
+script = ExtResource("11_yq6so")
+
+[node name="Rings" type="MeshInstance3D" parent="Planets/Saturn"]
+transform = Transform3D(0.8, 0, 0, 0, 0.39999998, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("TorusMesh_cjqg0")
+
+[node name="Uranus" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3195, 2342, 246)
+mesh = SubResource("SphereMesh_fv21b")
+
+[node name="Neptune" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2707, 1314, -1921)
+mesh = SubResource("SphereMesh_qkpxi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2577, 3937)
+mesh = SubResource("SphereMesh_dgi5k")
 
 [node name="MeteorsClose" type="Node" parent="."]
 

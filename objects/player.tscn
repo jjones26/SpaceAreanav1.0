@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl2ed4gkybggf"]
+[gd_scene load_steps=14 format=3 uid="uid://dl2ed4gkybggf"]
 
 [ext_resource type="Script" uid="uid://cu47grjp072jk" path="res://objects/player.gd" id="1_ffboj"]
 [ext_resource type="Resource" uid="uid://cu2gtxlcmbb34" path="res://weapons/blaster-repeater.tres" id="2_6epbw"]
@@ -15,6 +15,18 @@ height = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3rfka"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rfka"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i8sra"]
+material = SubResource("StandardMaterial3D_3rfka")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_4vq5b"]
+radius = 0.1
+height = 0.2
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_ffboj")
@@ -25,9 +37,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_gdq8c")
 debug_color = Color(0.96862745, 0.6, 0.69803923, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.53843725, 0, 0, 0, 0.50130105, 0, 0, 0, 0.5303472, 0, 0.55, 0)
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.53843725, 0, 0, 0, 0.50130105, 0, 0, 0, 0.5303472, 0, 0.55308235, 0.009420812)
 mesh = SubResource("CapsuleMesh_3rfka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.5402733, 0, 0, 0, 0.39816225, 0, 0, 0, 0.44342476, 0.1740753, 0.5591545, -0.46146452)
+visible = false
+mesh = SubResource("CapsuleMesh_i8sra")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.5402733, 0, 0, 0, 0.39816222, 0, 0, 0, 0.44342476, -0.14257085, 0.5591545, -0.4614645)
+visible = false
+mesh = SubResource("CapsuleMesh_i8sra")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.99999976, 0, 0.2977531, -0.5162551)
+visible = false
+mesh = SubResource("SphereMesh_4vq5b")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
