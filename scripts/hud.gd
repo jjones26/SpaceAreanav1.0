@@ -3,13 +3,22 @@ extends CanvasLayer
 @onready var score_label = $ScoreLabel
 @onready var high_score_label: Label = $HighScoreLabel
 @onready var wave_label: Label = $WaveLabel
+@onready var crowd_bar: TextureProgressBar = $CrowdMeter
+@onready var health_bar: TextureProgressBar = $HealthBar
+
 
 var flash_tween: Tween
 var is_counting_down: bool = false
 var countdown_time: float = 0.0
+var crowd_tween: Tween
 
 func _on_health_updated(health):
 	$Health.text = str(health) + "%"
+	health_bar.value = health
+	if health <= 25:
+		health_bar.tint_progress = Color.RED
+	else:
+		health_bar.tint_progress = Color.WHITE
 
 func _process(delta: float) -> void:
 	$FPSLabel.text = "FPS: " + str(Engine.get_frames_per_second())
@@ -23,13 +32,19 @@ func _process(delta: float) -> void:
 func _ready():
 	GameManager.score_changed.connect(_on_score_updated)
 	GameManager.high_score_changed.connect(_on_high_score_updated)
-	
+	GameManager.crowd_meter_changed.connect(_on_crowd_updated)
+	crowd_bar.max_value = GameManager.MAX_CROWD
+	crowd_bar.value = GameManager.crowd_value
 	var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
 	if spawner:
 		spawner.wave_changed.connect(_update_wave_display)
 		spawner.state_changed.connect(_on_spawner_state_changed)
 		_update_wave_display(spawner.current_wave)
-	
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		#player.health_updated.connect(_on_health_updated)
+		health_bar.max_value = player.max_health
+		_on_health_updated(player.health)
 	high_score_label.text = "High Score: " + str(GameManager.high_score)
 	score_label.text = "Eliminations: " + str(GameManager.score)
 
@@ -67,3 +82,15 @@ func _on_high_score_updated(new_high):
 
 func _on_score_updated(new_score):
 	score_label.text = "Eliminations: " + str(new_score)
+
+
+func _on_crowd_updated(new_value: float):
+	if crowd_tween:
+		crowd_tween.kill()
+	crowd_tween = create_tween()
+	crowd_tween.tween_property(crowd_bar, "value", new_value, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	if new_value >= GameManager.MAX_CROWD:
+		_on_crowd_maxed()
+
+func _on_crowd_maxed():
+	print("CROWD IS GOING WILD!")

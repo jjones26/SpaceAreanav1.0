@@ -2,14 +2,26 @@ extends Node
 
 var high_score: int = 0
 const SAVE_PATH = "user://highscore.save"
-signal score_changed(new_score)
+
 var score: int = 0
+var crowd_value: float = 0.0
+const MAX_CROWD: float = 100.0
+
+signal score_changed(new_score)
 signal high_score_changed(new_high_score)
+signal crowd_meter_changed(new_value: float)
 
 
 func _ready():
 	load_high_score()
 
+func add_crowd(amount: float):
+	crowd_value = clamp(crowd_value + amount, 0, MAX_CROWD)
+	crowd_meter_changed.emit(crowd_value)
+
+func reset_crowd():
+	crowd_value = 0.0
+	crowd_meter_changed.emit(crowd_value)
 
 
 func add_score(amount: int):

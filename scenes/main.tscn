@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=64 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -6,7 +6,10 @@
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
 [ext_resource type="PackedScene" uid="uid://dpm3l05d7fu35" path="res://objects/platform.tscn" id="5_3s40e"]
 [ext_resource type="PackedScene" uid="uid://r7rt7pth4u7o" path="res://objects/wall_low.tscn" id="5_6vel1"]
+[ext_resource type="Texture2D" uid="uid://bmily4ed8lu2d" path="res://fonts/bar_shadow_square_large.png" id="5_fv21b"]
+[ext_resource type="Texture2D" uid="uid://bs4xdli1qb6ge" path="res://fonts/bar_square_gloss_large.png" id="6_tel4y"]
 [ext_resource type="PackedScene" uid="uid://c71evdjblk5wp" path="res://objects/wall_high.tscn" id="7_cabne"]
+[ext_resource type="Texture2D" uid="uid://bcpwnj2ocie2q" path="res://fonts/bar_square_gloss_large red.png" id="7_tel4y"]
 [ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="7_wggef"]
 [ext_resource type="PackedScene" uid="uid://b8bx6ou8syltw" path="res://objects/wall_high_field.tscn" id="9_vxglm"]
 [ext_resource type="PackedScene" uid="uid://c7s4mk2q7insp" path="res://objects/rock_large.tscn" id="10_yq6so"]
@@ -235,11 +238,25 @@ grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(64, 64)
 
+[node name="HealthBar" type="TextureProgressBar" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -64.0
+offset_right = 120.0
+offset_bottom = -40.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+texture_under = ExtResource("5_fv21b")
+texture_progress = ExtResource("7_tel4y")
+
 [node name="Health" type="Label" parent="HUD"]
-offset_left = 32.0
-offset_top = 640.0
-offset_right = 122.0
-offset_bottom = 685.0
+modulate = Color(1, 1, 1, 0.5882353)
+offset_left = 56.0
+offset_top = 648.0
+offset_right = 146.0
+offset_bottom = 693.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "100%"
@@ -269,6 +286,21 @@ label_settings = SubResource("LabelSettings_fpmwk")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="CrowdLabel" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_right = 87.0
+offset_bottom = 35.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Crowd Meter"
+label_settings = SubResource("LabelSettings_fpmwk")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="WaveLabel" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -286,14 +318,13 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="HighScoreLabel" type="Label" parent="HUD"]
-visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -192.0
-offset_top = 16.0
-offset_right = -18.0
-offset_bottom = 51.0
+offset_left = -1264.0
+offset_top = 64.0
+offset_right = -1090.0
+offset_bottom = 99.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -323,6 +354,19 @@ Jump: Space
 Switch Weapon: E"
 label_settings = SubResource("LabelSettings_fpmwk")
 vertical_alignment = 2
+
+[node name="CrowdMeter" type="TextureProgressBar" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 40.0
+offset_right = -96.0
+offset_bottom = 80.0
+grow_horizontal = 2
+scale = Vector2(4, 1)
+texture_under = ExtResource("5_fv21b")
+texture_progress = ExtResource("6_tel4y")
 
 [node name="Level" type="Node" parent="."]
 
@@ -493,7 +537,7 @@ mesh = SubResource("SphereMesh_5he1u")
 script = ExtResource("11_yq6so")
 
 [node name="Saturn" type="MeshInstance3D" parent="Planets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 521, 1792, -3995)
+transform = Transform3D(0.8660254, 0, -0.5, -0.12940952, 0.9659258, -0.22414386, 0.4829629, 0.25881904, 0.83651626, 1297, 1792, -3785)
 mesh = SubResource("SphereMesh_2cjbq")
 script = ExtResource("11_yq6so")
 
@@ -1044,28 +1088,28 @@ transform = Transform3D(-4, 0, -3.496911e-07, -1.7484555e-07, 3.4641018, 2.00000
 far = 200.0
 
 [node name="Sprite3D" type="Sprite3D" parent="DroneCameraTest/DroneSubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 5)
 texture = SubResource("ViewportTexture_gqmmt")
 
 [node name="Sprite3D2" type="Sprite3D" parent="DroneCameraTest/DroneSubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, -5)
 texture = SubResource("ViewportTexture_gqmmt")
 
 [node name="Sprite3D3" type="Sprite3D" parent="DroneCameraTest/DroneSubViewport"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 15, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 16, 0)
 texture = SubResource("ViewportTexture_gqmmt")
 
 [node name="Sprite3D4" type="Sprite3D" parent="DroneCameraTest/DroneSubViewport"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 15, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 16, 0)
 texture = SubResource("ViewportTexture_gqmmt")
 
 [node name="Jumbotron" type="Node" parent="."]
 
 [node name="platform-falling" parent="Jumbotron" instance=ExtResource("21_yc10j")]
-transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.5, 0, 9.430918, 0)
+transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.5, 0, 10.430918, 0)
 
 [node name="platform-falling2" parent="Jumbotron" instance=ExtResource("21_yc10j")]
-transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.5, 0, 20.060614, 0)
+transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.5, 0, 21.060614, 0)
 
 [node name="BackgroundSpaceshipManager" type="Node3D" parent="."]
 script = ExtResource("22_pm3ni")
@@ -1185,23 +1229,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4.837293, -24)
 [node name="Fan7" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.837293, -24)
 
-[node name="Fan8" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.837293, -24)
-
-[node name="Fan9" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.837293, -24)
-
-[node name="Fan10" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.837293, -24)
-
-[node name="Fan11" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.837293, -24)
-
 [node name="Fan12" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.837293, -24)
-
-[node name="Fan13" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.837293, -24)
 
 [node name="Fan14" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.837293, -24)
@@ -1665,9 +1694,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 12.539569, -31.94997)
 [node name="Fan259" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 12.539569, -31.94997)
 
-[node name="Fan18" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.837293, -24)
-
 [node name="Fan30" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.1272606, 4.837293, 24.01699)
 
@@ -1719,23 +1745,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.12
 [node name="Fan46" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.1272607, 4.837293, 24.01699)
 
-[node name="Fan47" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.1272607, 4.837293, 24.01699)
-
 [node name="Fan48" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.1272607, 4.837293, 24.01699)
-
-[node name="Fan49" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.12726, 4.837293, 24.01699)
-
-[node name="Fan50" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.12726, 4.837293, 24.01699)
-
-[node name="Fan51" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.12726, 4.837293, 24.01699)
-
-[node name="Fan52" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.1272607, 4.837293, 24.01699)
 
 [node name="Fan53" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.027262, 4.837293, 24.016989)
@@ -2193,9 +2204,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.1
 [node name="Fan413" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.1272616, 12.539569, 31.96696)
 
-[node name="Fan58" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.1272607, 4.837293, 24.01699)
-
 [node name="Fan59" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, -0.27685356)
 
@@ -2244,23 +2252,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.
 [node name="Fan74" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 7.7231445)
 
-[node name="Fan75" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 5.7231464)
-
 [node name="Fan76" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 3.7231464)
-
-[node name="Fan77" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 1.7231464)
-
-[node name="Fan78" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 11.723145)
-
-[node name="Fan79" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 9.723145)
-
-[node name="Fan80" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 7.7231445)
 
 [node name="Fan81" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 5.7231464)
@@ -2279,9 +2272,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.
 
 [node name="Fan85" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293844, 4.837293, 13.723145)
-
-[node name="Fan86" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.293846, 4.837293, 3.7231464)
 
 [node name="Fan415" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.951942, 6.1738257, -0.27685356)
@@ -2766,23 +2756,11 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.4
 [node name="Fan103" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -9.404116)
 
-[node name="Fan104" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -7.404117)
-
 [node name="Fan105" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -5.404117)
 
 [node name="Fan106" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -3.404117)
-
-[node name="Fan107" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -13.404116)
-
-[node name="Fan108" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -11.404116)
-
-[node name="Fan109" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -9.404116)
 
 [node name="Fan110" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -7.404117)
@@ -2798,9 +2776,6 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.4
 
 [node name="Fan114" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421108, 4.837293, -15.404116)
-
-[node name="Fan115" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -5.404117)
 
 [node name="Fan563" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 26.079208, 6.1738257, -1.4041171)
@@ -3004,9 +2979,6 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 29.3
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 29.30682, 9.507186, 24.595884)
 
 [node name="Fan631" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 29.30682, 9.507186, 26.595884)
-
-[node name="Fan632" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 29.30682, 9.507186, 26.595884)
 
 [node name="Fan633" parent="Fans" instance=ExtResource("34_dgi5k")]
@@ -3236,8 +3208,5 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 32.3
 
 [node name="Fan709" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 32.371082, 12.539569, -5.404118)
-
-[node name="Fan116" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.421112, 4.837293, -3.404117)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]

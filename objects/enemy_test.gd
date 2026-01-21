@@ -70,6 +70,7 @@ func destroy():
 		return
 	Audio.play("sounds/enemy_destroy.ogg")
 	GameManager.add_score(1)
+	GameManager.add_crowd(5.0)
 	died.emit()
 	destroyed = true
 	queue_free()

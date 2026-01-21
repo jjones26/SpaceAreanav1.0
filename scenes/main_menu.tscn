@@ -1,12 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://pcoe7t5j0rsl"]
 
 [ext_resource type="Script" uid="uid://c2owqejggrbrk" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bc3a8d6d6qj64" path="res://spacearenaicon.png" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="2_ekxnf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
-font = ExtResource("2_ekxnf")
-font_size = 128
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_bqqt6"]
 default_font = ExtResource("2_ekxnf")
@@ -38,32 +34,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -58.5
-offset_right = 58.5
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Space Arena"
-label_settings = SubResource("LabelSettings_ekxnf")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642.6667, 358.5)
+scale = Vector2(0.66944444, 0.66944444)
+texture = ExtResource("2_bqqt6")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.5
-offset_top = -176.5
-offset_right = 58.5
-offset_bottom = 176.5
-grow_horizontal = 2
+offset_left = 75.0
+offset_right = 475.0
+offset_bottom = 356.81702
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
