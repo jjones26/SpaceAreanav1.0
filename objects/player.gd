@@ -8,18 +8,15 @@ extends CharacterBody3D
 @export_subgroup("Weapons")
 @export var weapons: Array[Weapon] = []
 
-
 var weapon: Weapon
 var weapon_index := 0
 
 var mouse_sensitivity = 700
 var gamepad_sensitivity := 0.075
-
 var mouse_captured := true
 
 var movement_velocity: Vector3
 var rotation_target: Vector3
-
 var input_mouse: Vector2
 
 var health: int = 100
@@ -27,11 +24,8 @@ var max_health: int = 100
 var gravity := 0.0
 
 var previously_floored := false
-
 var jumps_remaining: int
-
 var container_offset = Vector3(1.2, -1.1, -2.75)
-
 var tween: Tween
 
 signal health_updated
@@ -49,8 +43,6 @@ signal health_updated
 @onready var damage_sound: AudioStreamPlayer3D = $DamageSound
 
 
-# Functions
-
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
@@ -60,44 +52,28 @@ func _process(delta):
 	# Handle functions
 	handle_controls(delta)
 	handle_gravity(delta)
-	
 	# Movement
-	
 	var applied_velocity: Vector3
-	
 	movement_velocity = transform.basis * movement_velocity # Move forward
-	
 	applied_velocity = velocity.lerp(movement_velocity, delta * 10)
 	applied_velocity.y = - gravity
-	
 	velocity = applied_velocity
 	move_and_slide()
-	
 	# Rotation 
 	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 30), delta * 10)
 	
-	# Movement sound
-	
+	# Movement sound	
 	sound_footsteps.stream_paused = true
-	
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
 			sound_footsteps.stream_paused = false
-	
 	# Landing after jump or falling
-	
 	camera.position.y = lerp(camera.position.y, 0.0, delta * 5)
-	
 	if is_on_floor() and gravity > 1 and !previously_floored: # Landed
 		Audio.play("sounds/land.ogg")
 		camera.position.y = -0.1
-	
 	previously_floored = is_on_floor()
-	
-	# Falling/respawning
-	
-	if position.y < -20:
-		get_tree().reload_current_scene()
+
 
 # Mouse movement
 
@@ -111,34 +87,24 @@ func handle_controls(delta):
 	if Input.is_action_just_pressed("mouse_capture"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		mouse_captured = true
-	
 	if Input.is_action_just_pressed("mouse_capture_exit"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		mouse_captured = false
-		
 		input_mouse = Vector2.ZERO
-	
 	# Movement
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	movement_velocity = Vector3(input.x, 0, input.y).normalized() * movement_speed
-	
 	# Handle Controller Rotation
 	var rotation_input := Input.get_vector("camera_right", "camera_left", "camera_down", "camera_up")
 	if rotation_input:
 		handle_rotation(rotation_input.x, rotation_input.y, true, delta)
-	
 	# Shooting
-	
 	action_shoot()
-	
 	# Jumping
-	
 	if Input.is_action_just_pressed("jump"):
 		if jumps_remaining:
 			action_jump()
-		
 	# Weapon switching
-	
 	action_weapon_toggle()
 
 # Camera rotation
@@ -159,7 +125,6 @@ func handle_rotation(xRot: float, yRot: float, isController: bool, delta: float 
 
 func handle_gravity(delta):
 	gravity += 7 * delta
-	
 	if gravity > 0 and is_on_floor():
 		jumps_remaining = number_of_jumps
 		gravity = 0
@@ -176,31 +141,20 @@ func action_jump():
 func action_shoot():
 	if Input.is_action_pressed("shoot"):
 		if !blaster_cooldown.is_stopped(): return # Cooldown for shooting
-		
 		Audio.play(weapon.sound_shoot)
-		
 		# Set muzzle flash position, play animation
-		
 		muzzle.play("default")
-		
 		muzzle.rotation_degrees.z = randf_range(-45, 45)
 		muzzle.scale = Vector3.ONE * randf_range(0.40, 0.75)
 		muzzle.position = container.position - weapon.muzzle_position
-		
 		blaster_cooldown.start(weapon.cooldown)
-		
 		# Shoot the weapon, amount based on shot count
-		
 		for n in weapon.shot_count:
 			raycast.target_position.x = randf_range(-weapon.spread, weapon.spread)
 			raycast.target_position.y = randf_range(-weapon.spread, weapon.spread)
-			
 			raycast.force_raycast_update()
-			
 			if !raycast.is_colliding(): continue # Don't create impact when raycast didn't hit
-			
 			var collider = raycast.get_collider()
-			
 			# Hitting an enemy
 			
 			if collider.has_method("damage"):
@@ -210,14 +164,10 @@ func action_shoot():
 			
 			var impact = preload("res://objects/impact.tscn")
 			var impact_instance = impact.instantiate()
-			
 			impact_instance.play("shot")
-			
 			get_tree().root.add_child(impact_instance)
-			
 			impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
 			impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true)
-			
 		var knockback = random_vec2(weapon.min_knockback, weapon.max_knockback)
 		# print('knockback', knockback)
 		container.position.z += 0.25 # Knockback of weapon visual
@@ -233,14 +183,12 @@ func action_weapon_toggle():
 	if Input.is_action_just_pressed("weapon_toggle"):
 		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
 		initiate_change_weapon(weapon_index)
-		
 		Audio.play("sounds/weapon_change.ogg")
 
 # Initiates the weapon changing animation (tween)
 
 func initiate_change_weapon(index):
 	weapon_index = index
-	
 	tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(container, "position", container_offset - Vector3(0, 1, 0), 0.1)
@@ -250,25 +198,19 @@ func initiate_change_weapon(index):
 
 func change_weapon():
 	weapon = weapons[weapon_index]
-
 	# Step 1. Remove previous weapon model(s) from container
-	
 	for n in container.get_children():
 		container.remove_child(n)
-	
 	# Step 2. Place new weapon model in container
 	
 	var weapon_model = weapon.model.instantiate()
 	container.add_child(weapon_model)
-	
 	weapon_model.position = weapon.position
 	weapon_model.rotation_degrees = weapon.rotation
-	
 	# Step 3. Set model to only render on layer 2 (the weapon camera)
 	
 	for child in weapon_model.find_children("*", "MeshInstance3D"):
 		child.layers = 2
-		
 	# Set weapon data
 	
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
@@ -283,17 +225,20 @@ func damage(amount):
 	if damage_flash:
 		damage_flash.visible = true
 		await get_tree().create_timer(.1).timeout
-		damage_flash.visible = false
+		if is_inside_tree():
+			damage_flash.visible = false
 	if health <= 0:
 		die()
 
 
 func die() -> void:
+	if not is_inside_tree() or is_queued_for_deletion():
+		return
 	print("Player died! Current Score: ", GameManager.score)
 	print("High Score before save: ", GameManager.high_score)
 	GameManager.save_high_score()
 	GameManager.reset_score()
-	get_tree().reload_current_scene() # Reset when out of health
+	get_tree().call_deferred("reload_current_scene") # Reset when out of health
 
 #healing
 func heal(amount: int) -> void:
