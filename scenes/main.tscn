@@ -263,62 +263,62 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 [node name="Planets" type="Node" parent="."]
 
 [node name="PlanetTerrestrial" parent="Planets" instance=ExtResource("11_ya4ey")]
-transform = Transform3D(-40.60193, 0, 498.34863, 0, 500, 0, -498.34863, 0, -40.60193, 196.51334, 217.29822, -446.83206)
+transform = Transform3D(-468.31583, 0, 175.1576, 0, 500, 0, -175.1576, 0, -468.31583, 196.51334, 217.29822, -446.83206)
 
 [node name="PlanetNoAtmosphere" parent="Planets" instance=ExtResource("12_trceg")]
 transform = Transform3D(200.00044, 0, 0.00089327793, 0, 200, 0, -0.00089327793, 0, 200.00044, -249.91281, 419.47845, -658.0058)
 skeleton = NodePath("../..")
 
 [node name="PlanetGaseous" parent="Planets" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(-704.2338, 0, -379.54382, 0, 800, 0, 379.54382, 0, -704.2338, -1254.7994, 698.4205, 556.4917)
+transform = Transform3D(754.73206, 0, 265.28906, 0, 800, 0, -265.28906, 0, 754.73206, -1254.7994, 698.4205, 556.4917)
 skeleton = NodePath("../..")
 
 [node name="PlanetIce" parent="Planets" instance=ExtResource("14_jbj1t")]
-transform = Transform3D(-30.857407, 0, 378.74423, 0, 380, 0, -378.74423, 0, -30.857407, -3137.1943, 898.27765, 0)
+transform = Transform3D(-355.91934, 0, 133.11952, 0, 380, 0, -133.11952, 0, -355.91934, -3137.1943, 898.27765, 0)
 
 [node name="PlanetLava" parent="Planets" instance=ExtResource("15_muem4")]
-transform = Transform3D(-30.857462, 0, 378.7449, 0, 380, 0, -378.7449, 0, -30.857462, -2861.6575, 800.9215, -1114.5828)
+transform = Transform3D(-355.91995, 0, 133.11975, 0, 380, 0, -133.11975, 0, -355.91995, -2861.6575, 800.9215, -1114.5828)
 
 [node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(-2461.5083, 0, 437.00662, 0, 2499.997, 0, -437.00662, 0, -2461.5083, 0, 1750, 4000)
+transform = Transform3D(-1103.7549, 0, 2243.1504, 0, 2499.997, 0, -2243.1504, 0, -1103.7549, 0, 1750, 4000)
 
 [node name="PlanetSand" parent="Planets" instance=ExtResource("17_muem4")]
-transform = Transform3D(-30.857475, 0, 378.7451, 0, 380, 0, -378.7451, 0, -30.857475, 1582.5, 291.89026, 620.002)
+transform = Transform3D(-355.92014, 0, 133.11981, 0, 380, 0, -133.11981, 0, -355.92014, 1582.5, 291.89026, 620.002)
 
 [node name="MeteorsClose" type="Node" parent="."]
 
 [node name="meteor_detailed2" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -51.471554, 17.884304, 15.281994)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -61.471554, 23.884304, 30.281994)
 
 [node name="meteor_detailed3" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 16, -39.08767)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 20, -49.08767)
 
 [node name="meteor_detailed4" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 25.632624, 14, -10.11212)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 43.63262, 22, -10.11212)
 
 [node name="meteor_detailed5" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18.19812, 15, -33.55593)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18.19812, 20, -33.55593)
 
 [node name="meteor_detailed6" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.626825, 12.604665, -40.042355)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.626825, 12.604665, -49.042355)
 
 [node name="meteor_detailed12" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -39.907146, 11.08645, -44.042355)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -39.907146, 21.086449, -67.04236)
 
 [node name="meteor_detailed7" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.172693, 15.661764, 26.292318)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.172693, 17.661764, 41.29232)
 
 [node name="meteor_detailed8" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -1.8997154, 11, 22.097507)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -1.8997154, 11, 44.097507)
 
 [node name="meteor_detailed9" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 16.12122, 9.554501, 0)
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 28.12122, 13.554501, 0)
 
 [node name="meteor_detailed10" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -49.97822, 15, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -49.97822, 19, 0)
 
 [node name="meteor_detailed11" parent="MeteorsClose" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -36.844208, 13, -13.463257)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -52.844208, 16, -16.463257)
 
 [node name="Walls" type="Node" parent="."]
 
@@ -903,14 +903,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.360582, 0.9378536, -0.20745
 [node name="stairscorner" parent="Bleachers" instance=ExtResource("34_j8jky")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -27, 3, 27)
 
+[node name="stairscorner6" parent="Bleachers" instance=ExtResource("34_j8jky")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -32, 8, 32)
+
 [node name="stairscorner2" parent="Bleachers" instance=ExtResource("34_j8jky")]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -27, 3, -27)
 
 [node name="stairscorner3" parent="Bleachers" instance=ExtResource("34_j8jky")]
 transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 27, 3, -27)
 
+[node name="stairscorner8" parent="Bleachers" instance=ExtResource("34_j8jky")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 32, 8, -32)
+
 [node name="stairscorner4" parent="Bleachers" instance=ExtResource("34_j8jky")]
 transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 27, 3, 27)
+
+[node name="stairscorner7" parent="Bleachers" instance=ExtResource("34_j8jky")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 32)
 
 [node name="stairstest" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -27, 3, 0)
@@ -960,6 +969,42 @@ transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 18, 
 [node name="stairstest22" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 23, 3, -27)
 
+[node name="stairstest63" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -22, 8, -32)
+
+[node name="stairstest89" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -27, 8, -32)
+
+[node name="stairstest64" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -17, 8, -32)
+
+[node name="stairstest65" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -12, 8, -32)
+
+[node name="stairstest66" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -7, 8, -32)
+
+[node name="stairstest67" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, -2, 8, -32)
+
+[node name="stairstest68" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 3, 8, -32)
+
+[node name="stairstest69" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 8, 8, -32)
+
+[node name="stairstest70" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 13, 8, -32)
+
+[node name="stairstest71" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 18, 8, -32)
+
+[node name="stairstest72" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 23, 8, -32)
+
+[node name="stairstest88" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-5, 0, 4.371139e-07, 0, 5, 0, -4.371139e-07, 0, -5, 27, 8, -32)
+
 [node name="stairstest23" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 27, 3, -22)
 
@@ -990,6 +1035,42 @@ transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 27, 3,
 [node name="stairstest32" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 27, 3, 23)
 
+[node name="stairstest42" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -22)
+
+[node name="stairstest87" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -27)
+
+[node name="stairstest43" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -17)
+
+[node name="stairstest44" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -12)
+
+[node name="stairstest45" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -7)
+
+[node name="stairstest46" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, -2)
+
+[node name="stairstest47" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 3)
+
+[node name="stairstest48" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 8)
+
+[node name="stairstest49" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 13)
+
+[node name="stairstest50" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 18)
+
+[node name="stairstest51" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 23)
+
+[node name="stairstest86" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(6.556709e-07, 0, 5, 0, 5, 0, -5, 0, 6.556709e-07, 32, 8, 27)
+
 [node name="stairstest2" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -27, 3, 5)
 
@@ -1004,6 +1085,48 @@ transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -2
 
 [node name="stairstest6" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -27, 3, 25)
+
+[node name="stairscorner5" parent="Bleachers" instance=ExtResource("34_j8jky")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -32)
+
+[node name="stairstest52" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 0)
+
+[node name="stairstest53" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -5)
+
+[node name="stairstest54" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -10)
+
+[node name="stairstest55" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -15)
+
+[node name="stairstest56" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -20)
+
+[node name="stairstest57" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -25)
+
+[node name="stairstest90" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, -27)
+
+[node name="stairstest58" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 5)
+
+[node name="stairstest59" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 10)
+
+[node name="stairstest60" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 15)
+
+[node name="stairstest61" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 20)
+
+[node name="stairstest62" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 25)
+
+[node name="stairstest83" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -32, 8, 27)
 
 [node name="stairstest7" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -22, 3, 27)
@@ -1034,5 +1157,41 @@ transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 17, 3,
 
 [node name="stairstest34" parent="Bleachers" instance=ExtResource("35_kmb1v")]
 transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 22, 3, 27)
+
+[node name="stairstest73" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -22, 8, 32)
+
+[node name="stairstest84" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -27, 8, 32)
+
+[node name="stairstest74" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -17, 8, 32)
+
+[node name="stairstest75" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -12, 8, 32)
+
+[node name="stairstest76" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -7, 8, 32)
+
+[node name="stairstest77" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -2, 8, 32)
+
+[node name="stairstest78" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 3, 8, 32)
+
+[node name="stairstest79" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 8, 8, 32)
+
+[node name="stairstest80" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 13, 8, 32)
+
+[node name="stairstest81" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 17, 8, 32)
+
+[node name="stairstest82" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 22, 8, 32)
+
+[node name="stairstest85" parent="Bleachers" instance=ExtResource("35_kmb1v")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, 27, 8, 32)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
