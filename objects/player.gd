@@ -81,16 +81,16 @@ func _input(event):
 	if event is InputEventMouseMotion and mouse_captured:
 		input_mouse = event.relative / mouse_sensitivity
 		handle_rotation(event.relative.x, event.relative.y, false)
+	if event.is_action_pressed("mouse_capture_exit"):
+		pause_game()
 
 func handle_controls(delta):
 	# Mouse capture
+	if Input.is_action_just_pressed("mouse_capture_exit"):
+		pause_game()
 	if Input.is_action_just_pressed("mouse_capture"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		mouse_captured = true
-	if Input.is_action_just_pressed("mouse_capture_exit"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		mouse_captured = false
-		input_mouse = Vector2.ZERO
 	# Movement
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	movement_velocity = Vector3(input.x, 0, input.y).normalized() * movement_speed
@@ -107,6 +107,12 @@ func handle_controls(delta):
 	# Weapon switching
 	action_weapon_toggle()
 
+
+func pause_game():
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var pause_menu = preload("res://scenes/pause_menu.tscn").instantiate()
+	get_tree().current_scene.add_child(pause_menu)
 # Camera rotation
 
 func handle_rotation(xRot: float, yRot: float, isController: bool, delta: float = 0.0):

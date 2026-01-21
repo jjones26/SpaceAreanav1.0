@@ -19,7 +19,7 @@ offset_bottom = 271.0
 grow_horizontal = 2
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 640.0
 offset_top = 360.0
@@ -36,5 +36,5 @@ offset_bottom = 511.0
 text = "Quit"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
