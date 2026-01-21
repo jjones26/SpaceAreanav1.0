@@ -7,6 +7,9 @@ extends CanvasLayer
 func _on_health_updated(health):
 	$Health.text = str(health) + "%"
 
+func _process(_delta: float) -> void:
+	$FPSLabel.text = "FPS: " + str(Engine.get_frames_per_second())
+
 
 func _ready():
 	GameManager.score_changed.connect(_on_score_updated)

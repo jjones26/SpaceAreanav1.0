@@ -1,40 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://pcoe7t5j0rsl"]
+[gd_scene load_steps=7 format=3 uid="uid://pcoe7t5j0rsl"]
 
 [ext_resource type="Script" uid="uid://c2owqejggrbrk" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="2_ekxnf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font = ExtResource("2_ekxnf")
+font_size = 128
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_bqqt6"]
+default_font = ExtResource("2_ekxnf")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_wu84c"]
+default_font = ExtResource("2_ekxnf")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_8ln24"]
+default_font = ExtResource("2_ekxnf")
+default_font_size = 32
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 640.0
-offset_top = 240.0
-offset_right = 686.0
-offset_bottom = 271.0
+offset_left = -58.5
+offset_right = 58.5
+offset_bottom = 23.0
 grow_horizontal = 2
+text = "Space Arena"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -176.5
+offset_right = 58.5
+offset_bottom = 176.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_bqqt6")
 text = "Start"
 
-[node name="MainMenuButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 640.0
-offset_top = 360.0
-offset_right = 710.0
-offset_bottom = 391.0
+[node name="MainMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wu84c")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 640.0
-offset_top = 480.0
-offset_right = 682.0
-offset_bottom = 511.0
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8ln24")
 text = "Quit"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenuButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
