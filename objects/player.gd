@@ -234,11 +234,15 @@ func damage(amount):
 func die() -> void:
 	if not is_inside_tree() or is_queued_for_deletion():
 		return
-	print("Player died! Current Score: ", GameManager.score)
-	print("High Score before save: ", GameManager.high_score)
 	GameManager.save_high_score()
 	GameManager.reset_score()
-	get_tree().call_deferred("reload_current_scene") # Reset when out of health
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var game_over_scene = preload("res://scenes/game_over.tscn")
+	var game_over_instance = game_over_scene.instantiate()
+	get_tree().current_scene.add_child(game_over_instance)
+	queue_free()
+
 
 #healing
 func heal(amount: int) -> void:
