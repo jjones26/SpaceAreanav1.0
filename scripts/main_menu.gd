@@ -1,6 +1,11 @@
 extends Control
 
+@onready var high_score_label: Label = $HighScoreLabel
 
+
+
+func _ready() -> void:
+	high_score_label.text = "High Score: " + str(GameManager.high_score)
 
 
 func _on_start_button_pressed() -> void:

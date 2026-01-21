@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 @export var amplitude: float = 0.25
 @export var speed: float = 10.0
-@export var amplitude_variance: float = 0.5
+@export var amplitude_variance: float = 0.3
 
 var base_y: float
 var time := 0.0

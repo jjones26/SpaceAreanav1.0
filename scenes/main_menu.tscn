@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pcoe7t5j0rsl"]
+[gd_scene load_steps=8 format=3 uid="uid://pcoe7t5j0rsl"]
 
 [ext_resource type="Script" uid="uid://c2owqejggrbrk" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://bc3a8d6d6qj64" path="res://spacearenaicon.png" id="2_bqqt6"]
@@ -15,6 +15,12 @@ default_font_size = 32
 [sub_resource type="Theme" id="Theme_8ln24"]
 default_font = ExtResource("2_ekxnf")
 default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font = ExtResource("2_ekxnf")
+font_size = 30
+outline_size = 12
+outline_color = Color(0, 0, 0, 0.470588)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -67,6 +73,26 @@ text = "Options"
 layout_mode = 2
 theme = SubResource("Theme_8ln24")
 text = "Quit"
+
+[node name="HighScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = 24.0
+offset_right = 529.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "High Score: "
+label_settings = SubResource("LabelSettings_bqqt6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_options_button_pressed"]
