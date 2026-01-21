@@ -1,20 +1,22 @@
 extends Node3D
 
 @export var health_pack_scene: PackedScene
-@export var spawn_time: float = 30.0
+@export var respawn_time: float = 30.0
 
 func _ready() -> void:
-	_spawn_health_packs()
-	_spawn_timer()
+	for child in get_children():
+		if child is Node3D:
+			spawn_at_point(child)
 
-func _spawn_timer() -> void:
-	while true:
-		await get_tree().create_timer(spawn_time).timeout
-		_spawn_health_packs()
+func spawn_at_point(spawn_node: Node3D) -> void:
+	if health_pack_scene == null:
+		return
+		
+	var pack = health_pack_scene.instantiate()
+	pack.position = spawn_node.global_position
+	get_tree().current_scene.add_child.call_deferred(pack)
+	pack.picked_up.connect(_on_pack_collected.bind(spawn_node))
 
-func _spawn_health_packs() -> void:
-	for spawner in get_children():
-		if spawner is Node3D:
-			var pack := health_pack_scene.instantiate()
-			pack.global_transform = spawner.global_transform
-			get_tree().current_scene.add_child.call_deferred(pack)
+func _on_pack_collected(spawn_node: Node3D) -> void:
+	await get_tree().create_timer(respawn_time).timeout
+	spawn_at_point(spawn_node)

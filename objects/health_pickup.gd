@@ -1,5 +1,8 @@
 extends Area3D
 
+
+signal picked_up
+
 @export var heal_amount: int = 15
 
 @onready var pickup_sfx: AudioStreamPlayer3D = $PickupSFX
@@ -19,9 +22,10 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("heal"):
+		picked_up.emit()
 		pickup_health.visible = false
 		pickup_sfx.play()
-		collision_shape_3d.queue_free()
+		collision_shape_3d.set_deferred("disabled", true)
 		body.heal(heal_amount)
 		await pickup_sfx.finished
 		queue_free()
