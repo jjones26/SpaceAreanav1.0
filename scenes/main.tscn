@@ -1460,9 +1460,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 9.507186, -28.885706)
 [node name="Fan198" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 9.507186, -28.885706)
 
-[node name="Fan262" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 9.507186, -28.885706)
-
 [node name="Fan180" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 9.507186, -28.885706)
 

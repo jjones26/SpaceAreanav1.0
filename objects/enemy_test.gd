@@ -6,7 +6,7 @@ var player: Node3D
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
 
-var health := 100
+@export var health := 100
 var time := 0.0
 var target_position: Vector3
 var destroyed := false

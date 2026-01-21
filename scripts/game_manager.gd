@@ -14,6 +14,11 @@ signal crowd_meter_changed(new_value: float)
 
 func _ready():
 	load_high_score()
+	
+
+func _process(delta: float) -> void:
+	#GameManager.add_crowd(-delta * .5)
+	pass
 
 func add_crowd(amount: float):
 	crowd_value = clamp(crowd_value + amount, 0, MAX_CROWD)

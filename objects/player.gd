@@ -47,6 +47,8 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
 	initiate_change_weapon(weapon_index)
+	GameManager.reset_score()
+	GameManager.reset_crowd()
 
 func _process(delta):
 	# Handle functions
@@ -241,7 +243,6 @@ func die() -> void:
 	if not is_inside_tree() or is_queued_for_deletion():
 		return
 	GameManager.save_high_score()
-	GameManager.reset_score()
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var game_over_scene = preload("res://scenes/game_over.tscn")

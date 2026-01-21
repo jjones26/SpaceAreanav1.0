@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 @export var amplitude: float = 0.25
 @export var speed: float = 10.0
-@export var amplitude_variance: float = 0.1
+@export var amplitude_variance: float = 0.5
 
 var base_y: float
 var time := 0.0
@@ -17,7 +17,7 @@ func _ready():
 	# --- Randomize color per fan ---
 	var mat := get_active_material(0)
 	if mat:
-		mat = mat.duplicate()              # IMPORTANT: make it instance-unique
+		mat = mat.duplicate()             
 		var color := Color.from_hsv(randf(), 0.7, 1.0)
 		mat.albedo_color = color
 		set_surface_override_material(0, mat)

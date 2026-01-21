@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dowbaj5jy7q4r"]
+
+[ext_resource type="Script" uid="uid://ekj11kipn6p4" path="res://objects/enemy_test.gd" id="1_0intu"]
+[ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="2_0gnqy"]
+[ext_resource type="PackedScene" uid="uid://8oabo4lyyi67" path="res://models/mech-1.glb" id="2_mci3f"]
+[ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="3_mci3f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
+radius = 0.88494754
+
+[node name="enemy-flying-test-mech" type="CharacterBody3D"]
+script = ExtResource("1_0intu")
+health = 250
+
+[node name="mech-1" parent="." instance=ExtResource("2_mci3f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="enemy-flying" parent="." instance=ExtResource("2_0gnqy")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7799233, 0)
+shape = SubResource("SphereShape3D_iix87")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32089877, 0)
+target_position = Vector3(0, 0, 5)
+
+[node name="MuzzleA" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.72061396, 0.54324293, 0.4)
+sprite_frames = ExtResource("3_mci3f")
+frame = 2
+
+[node name="MuzzleB" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.6992102, 0.5504205, 0.4)
+sprite_frames = ExtResource("3_mci3f")
+frame = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2582517, 0.31417006)
+light_color = Color(1, 0, 0, 1)
+omni_range = 0.43037003
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="enemy-flying"]
