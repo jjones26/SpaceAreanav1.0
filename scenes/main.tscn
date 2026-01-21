@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=61 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bqiijctxnttfq" path="res://objects/meteor_detailed_2.tscn" id="11_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://dboxngeco31t4" path="res://objects/rock.tscn" id="11_fv21b"]
 [ext_resource type="Script" uid="uid://l7s7uybri0ek" path="res://objects/planetsspinning.gd" id="11_yq6so"]
-[ext_resource type="PackedScene" uid="uid://c1lxtdgeggnej" path="res://addons/naejimer_3d_planet_generator/scenes/star.tscn" id="16_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bgcsi4pm7m7c7" path="res://models/Spaceship.glb" id="19_0ld40"]
 [ext_resource type="Script" uid="uid://drtdudhrijugu" path="res://models/spaceship.gd" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bwgwd5ue8i2bt" path="res://models/platform.glb" id="21_yc10j"]
@@ -270,6 +269,22 @@ label_settings = SubResource("LabelSettings_fpmwk")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="WaveLabel" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 51.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Round: "
+label_settings = SubResource("LabelSettings_fpmwk")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="HighScoreLabel" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -471,10 +486,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1810, 1115, 1086)
 mesh = SubResource("SphereMesh_pibwh")
 script = ExtResource("11_yq6so")
 
-[node name="Star" parent="Planets" instance=ExtResource("16_dp3eg")]
-transform = Transform3D(90.824524, 0, 2498.3494, 0, 2499.997, 0, -2498.3494, 0, 90.824524, 0, 2495, 4000)
-visible = false
-
 [node name="Jupiter" type="MeshInstance3D" parent="Planets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1011, 827, -2789)
 mesh = SubResource("SphereMesh_5he1u")
@@ -497,7 +508,7 @@ mesh = SubResource("SphereMesh_fv21b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2707, 1314, -1921)
 mesh = SubResource("SphereMesh_qkpxi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Planets"]
+[node name="Sun" type="MeshInstance3D" parent="Planets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2577, 3937)
 mesh = SubResource("SphereMesh_dgi5k")
 

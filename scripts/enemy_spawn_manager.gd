@@ -49,7 +49,6 @@ func start_spawning():
 
 func _toggle_break():
 	is_on_break = !is_on_break
-	
 	if is_on_break:
 		print("Starting Break Phase...")
 		state_timer.start(break_duration)
@@ -62,21 +61,17 @@ func _toggle_break():
 func _on_spawn_timer_timeout():
 	if current_enemies < max_enemies:
 		spawn_enemy()
-		
 		# Ramp up the speed
 		current_interval = max(minimum_interval, current_interval - ramp_up_speed)
-		
 	# Restart timer with new (potentially faster) interval
 	spawn_timer.start(current_interval)
 
 func spawn_enemy() -> void:
 	var spawner = spawners.pick_random()
 	var enemy = enemy_scene.instantiate()
-	
 	# Add to main scene tree
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = spawner.global_position
-	
 	current_enemies += 1
 	enemy.tree_exited.connect(func(): current_enemies -= 1)
 	
