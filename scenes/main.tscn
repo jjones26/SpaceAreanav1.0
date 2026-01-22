@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=73 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -29,9 +29,17 @@
 [ext_resource type="Script" uid="uid://cp18et5vurv4o" path="res://scripts/health_pack_spawner_manager.gd" id="31_tel4y"]
 [ext_resource type="Script" uid="uid://c6sdqtxlo4je0" path="res://scripts/enemy_spawn_manager.gd" id="32_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="32_qkpxi"]
+[ext_resource type="Script" uid="uid://ci7d2ic38wtrg" path="res://scenes/announcer_audio.gd" id="33_5he1u"]
 [ext_resource type="PackedScene" uid="uid://dggblvgmywfuo" path="res://objects/enemy_test.tscn" id="33_5q0nq"]
 [ext_resource type="AudioStream" uid="uid://cgwwea2dbu7m4" path="res://sounds/announcer/Galaxy Arena Intro.ogg" id="33_j8jky"]
+[ext_resource type="AudioStream" uid="uid://bxbfouebqlloj" path="res://sounds/announcer/crowd goes wild.ogg" id="34_5poiv"]
 [ext_resource type="PackedScene" uid="uid://70hk7jlwofs5" path="res://objects/fan.tscn" id="34_dgi5k"]
+[ext_resource type="AudioStream" uid="uid://eiuvgr170mc2" path="res://sounds/announcer/dont get shot.ogg" id="35_2cjbq"]
+[ext_resource type="AudioStream" uid="uid://p7j3nd7ham1h" path="res://sounds/announcer/eye on the prize.ogg" id="36_chjal"]
+[ext_resource type="AudioStream" uid="uid://cfcca8aku0qb1" path="res://sounds/announcer/little beans.ogg" id="37_cjqg0"]
+[ext_resource type="AudioStream" uid="uid://ug6wf320nrv5" path="res://sounds/announcer/now heres a guy.ogg" id="38_vchkt"]
+[ext_resource type="AudioStream" uid="uid://1kklonfa8udb" path="res://sounds/announcer/patrick mahomes.ogg" id="39_txyw0"]
+[ext_resource type="AudioStream" uid="uid://du4s67iofu4ty" path="res://sounds/announcer/taking damage.ogg" id="40_vc5cj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
@@ -3210,5 +3218,17 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 32.3
 stream = ExtResource("33_j8jky")
 volume_db = 5.0
 autoplay = true
+
+[node name="AnnouncerAudio" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AnnouncerAudio"]
+volume_db = 5.0
+script = ExtResource("33_5he1u")
+sfx_list = Array[AudioStream]([ExtResource("34_5poiv"), ExtResource("35_2cjbq"), ExtResource("36_chjal"), ExtResource("37_cjqg0"), ExtResource("38_vchkt"), ExtResource("39_txyw0"), ExtResource("40_vc5cj")])
+
+[node name="Timer" type="Timer" parent="AnnouncerAudio/AudioStreamPlayer3D"]
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
