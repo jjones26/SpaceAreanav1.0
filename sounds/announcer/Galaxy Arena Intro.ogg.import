@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgwwea2dbu7m4"
+path="res://.godot/imported/Galaxy Arena Intro.ogg-6b0c6fdf0a1f7ea84356755dcd8e8646.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/announcer/Galaxy Arena Intro.ogg"
+dest_files=["res://.godot/imported/Galaxy Arena Intro.ogg-6b0c6fdf0a1f7ea84356755dcd8e8646.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

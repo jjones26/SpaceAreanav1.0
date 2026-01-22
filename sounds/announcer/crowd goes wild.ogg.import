@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxbfouebqlloj"
+path="res://.godot/imported/crowd goes wild.ogg-26fba81f091cdc14323f06a8f16d78b1.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/announcer/crowd goes wild.ogg"
+dest_files=["res://.godot/imported/crowd goes wild.ogg-26fba81f091cdc14323f06a8f16d78b1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

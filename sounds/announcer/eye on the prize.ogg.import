@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://p7j3nd7ham1h"
+path="res://.godot/imported/eye on the prize.ogg-74727bc31479cb4e1dbcbd9426d5cb4f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/announcer/eye on the prize.ogg"
+dest_files=["res://.godot/imported/eye on the prize.ogg-74727bc31479cb4e1dbcbd9426d5cb4f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
