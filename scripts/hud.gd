@@ -58,6 +58,9 @@ func _on_spawner_state_changed(is_break: bool, time_left: float):
 		countdown_time = time_left
 		is_counting_down = true
 		start_flashing()
+		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
+		if spawner and spawner.current_wave == 0:
+			wave_label.text = "GET READY!"
 	else:
 		is_counting_down = false
 		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)

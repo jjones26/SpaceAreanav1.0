@@ -16,6 +16,7 @@ signal state_changed(is_break: bool, time_left: float)
 @export var active_duration: float = 30.0
 @export var break_duration: float = 10.0
 @export var auto_start: bool = true
+@export var intro_delay: float = 12.0 
 
 var spawners: Array[Node3D] = []
 var current_enemies: int = 0
@@ -43,7 +44,11 @@ func _ready() -> void:
 	state_timer.timeout.connect(_toggle_break)
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	if auto_start:
-		start_new_wave()
+		if intro_delay > 0:
+			print("Waiting for intro audio: ", intro_delay, " seconds...")
+			get_tree().create_timer(intro_delay).timeout.connect(start_new_wave)
+		else:
+			start_new_wave()
 
 func start_new_wave():
 	current_wave += 1

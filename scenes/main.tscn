@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=65 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://c6sdqtxlo4je0" path="res://scripts/enemy_spawn_manager.gd" id="32_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="32_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://dggblvgmywfuo" path="res://objects/enemy_test.tscn" id="33_5q0nq"]
+[ext_resource type="AudioStream" uid="uid://cgwwea2dbu7m4" path="res://sounds/announcer/Galaxy Arena Intro.ogg" id="33_j8jky"]
 [ext_resource type="PackedScene" uid="uid://70hk7jlwofs5" path="res://objects/fan.tscn" id="34_dgi5k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
@@ -1967,9 +1968,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.
 [node name="Fan335" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -26.872738, 9.507186, 28.902699)
 
-[node name="Fan336" parent="Fans" instance=ExtResource("34_dgi5k")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -26.872738, 9.507186, 28.902699)
-
 [node name="Fan337" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.12726, 9.507186, 28.902697)
 
@@ -3205,5 +3203,12 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 32.3
 
 [node name="Fan709" parent="Fans" instance=ExtResource("34_dgi5k")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 32.371082, 12.539569, -5.404118)
+
+[node name="Intro" type="Node3D" parent="."]
+
+[node name="IntroAudio" type="AudioStreamPlayer3D" parent="Intro"]
+stream = ExtResource("33_j8jky")
+volume_db = 5.0
+autoplay = true
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
