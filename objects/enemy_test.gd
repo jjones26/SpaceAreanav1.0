@@ -6,6 +6,7 @@ var player: Node3D
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
 
+@export var attack_damage := 5
 @export var health := 100
 var time := 0.0
 var target_position: Vector3
@@ -103,4 +104,4 @@ func _on_timer_timeout():
 			muzzle_b.play("default")
 			muzzle_b.rotation_degrees.z = randf_range(-45, 45)
 			Audio.play("sounds/enemy_attack.ogg")
-			collider.damage(5)  # Apply damage to player
+			collider.damage(attack_damage)  # Apply damage to player

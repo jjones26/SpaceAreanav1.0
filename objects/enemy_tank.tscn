@@ -12,6 +12,7 @@ radius = 0.88471085
 
 [node name="enemy-flying-test" type="CharacterBody3D"]
 script = ExtResource("1_w3gag")
+attack_damage = 10
 health = 200
 move_speed = 1.5
 health_pack_scene = ExtResource("2_7256n")
