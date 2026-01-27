@@ -99,6 +99,8 @@ func spawn_enemy() -> void:
 	enemy.tree_exited.connect(_on_enemy_died)
 
 func _on_enemy_died() -> void:
+	if not is_inside_tree():
+		return #safety check
 	current_enemies_alive -= 1
 	# Calculate total remaining (alive + yet to spawn)
 	var remaining_to_kill = (current_max_enemies - enemies_spawned_this_wave) + current_enemies_alive
@@ -108,6 +110,8 @@ func _on_enemy_died() -> void:
 		start_break_phase()
 
 func start_break_phase() -> void:
+	if not is_inside_tree():
+		return #safety check
 	is_on_break = true
 	spawn_timer.stop()
 	print("Wave Clear! Break starting for ", break_duration, "s")
