@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=74 format=4 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://ug6wf320nrv5" path="res://sounds/announcer/now heres a guy.ogg" id="38_vchkt"]
 [ext_resource type="AudioStream" uid="uid://1kklonfa8udb" path="res://sounds/announcer/patrick mahomes.ogg" id="39_txyw0"]
 [ext_resource type="AudioStream" uid="uid://du4s67iofu4ty" path="res://sounds/announcer/taking damage.ogg" id="40_vc5cj"]
+[ext_resource type="PackedScene" uid="uid://do136uipj1ovd" path="res://objects/enemy_tank.tscn" id="41_5poiv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
@@ -3246,5 +3247,8 @@ sfx_list = Array[AudioStream]([ExtResource("34_5poiv"), ExtResource("35_2cjbq"),
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="enemy-flying-test" parent="." instance=ExtResource("41_5poiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
