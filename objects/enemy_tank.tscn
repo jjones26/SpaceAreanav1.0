@@ -13,9 +13,10 @@ radius = 0.88471085
 [node name="enemy-flying-test" type="CharacterBody3D"]
 script = ExtResource("1_w3gag")
 attack_damage = 10
-health = 200
+health = 400
 move_speed = 1.5
 health_pack_scene = ExtResource("2_7256n")
+drop_chance = 0.5
 
 [node name="mech-tank" parent="." instance=ExtResource("3_7256n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

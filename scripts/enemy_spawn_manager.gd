@@ -6,6 +6,7 @@ signal enemies_remaining_changed(count: int)
 
 @export_group("Spawn Settings")
 @export var enemy_scene: PackedScene
+@export var heavy_enemy_scene: PackedScene
 @export var base_max_enemies: int = 10     # Total enemies for Wave 1
 @export var enemies_per_wave: int = 5      # How many more enemies each wave
 @export var initial_spawn_interval: float = 3.0
@@ -18,6 +19,8 @@ signal enemies_remaining_changed(count: int)
 @export var intro_delay: float = 12.0 
 
 var spawners: Array[Node3D] = []
+var heavies_spawned_this_wave: int = 0
+var heavy_spawned_this_wave: bool = false
 var current_enemies_alive: int = 0
 var enemies_spawned_this_wave: int = 0
 var current_max_enemies: int = 0
@@ -30,26 +33,20 @@ var is_on_break: bool = false
 
 func _ready() -> void:
 	current_interval = initial_spawn_interval
-	
 	# Setup Spawners
 	for child in get_children():
 		if child is Node3D:
 			spawners.append(child)
-			
 	if enemy_scene == null or spawners.is_empty():
 		push_error("Spawn Manager misconfigured! Check Scene and Spawners.")
 		return
-		
 	# Setup Timers
 	add_child(state_timer)
 	add_child(spawn_timer)
-	
 	state_timer.one_shot = true
 	spawn_timer.one_shot = true
-	
 	state_timer.timeout.connect(_on_break_finished)
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	
 	if auto_start:
 		if intro_delay > 0:
 			print("Waiting for intro: ", intro_delay, "s")
@@ -61,10 +58,11 @@ func start_new_wave() -> void:
 	current_wave += 1
 	is_on_break = false
 	enemies_spawned_this_wave = 0
+	heavy_spawned_this_wave = false
 	current_enemies_alive = 0
 	
 	# Linear difficulty scaling
-	current_max_enemies = base_max_enemies + ((current_wave - 1) * enemies_per_wave)
+	current_max_enemies = (base_max_enemies + ((current_wave - 1) * enemies_per_wave))
 	current_interval = initial_spawn_interval
 	# Notify UI
 	wave_changed.emit(current_wave)
@@ -75,7 +73,6 @@ func start_new_wave() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	if is_on_break: return
-
 	if enemies_spawned_this_wave < current_max_enemies:
 		spawn_enemy()
 		# Speed up the next spawn
@@ -86,7 +83,13 @@ func _on_spawn_timer_timeout() -> void:
 
 func spawn_enemy() -> void:
 	var spawner = spawners.pick_random()
-	var enemy = enemy_scene.instantiate()
+	var scene_to_spawn = enemy_scene
+	if not heavy_spawned_this_wave and enemies_spawned_this_wave >= (current_max_enemies / 2):
+		if heavy_enemy_scene: # Safety check
+			scene_to_spawn = heavy_enemy_scene
+			heavy_spawned_this_wave = true
+			print("Heavy enemy incoming!")
+	var enemy = scene_to_spawn.instantiate()
 	# Ensure enemy is added to the scene tree
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = spawner.global_position

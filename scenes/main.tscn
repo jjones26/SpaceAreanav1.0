@@ -1160,6 +1160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.567, 3, -21.587)
 [node name="EnemySpawnManager" type="Node3D" parent="."]
 script = ExtResource("32_5q0nq")
 enemy_scene = ExtResource("33_5q0nq")
+heavy_enemy_scene = ExtResource("41_5poiv")
 
 [node name="EnemySpawner1" type="Node3D" parent="EnemySpawnManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.563684, 0, 7.2850804)
@@ -3247,8 +3248,5 @@ sfx_list = Array[AudioStream]([ExtResource("34_5poiv"), ExtResource("35_2cjbq"),
 wait_time = 30.0
 one_shot = true
 autostart = true
-
-[node name="enemy-flying-test" parent="." instance=ExtResource("41_5poiv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]

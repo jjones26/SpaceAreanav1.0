@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var enemies_remaining_label: Label = $EnemiesRemainingLabel
 
-
+var spawner_ref: Node3D = null
 var flash_tween: Tween
 var is_counting_down: bool = false
 var countdown_time: float = 0.0
@@ -38,6 +38,7 @@ func _ready():
 	crowd_bar.value = GameManager.crowd_value
 	var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
 	if spawner:
+		spawner_ref = spawner
 		spawner.wave_changed.connect(_update_wave_display)
 		spawner.state_changed.connect(_on_spawner_state_changed)
 		spawner.enemies_remaining_changed.connect(_on_enemies_remaining_changed)
@@ -72,15 +73,16 @@ func _on_spawner_state_changed(is_break: bool, time_left: float):
 		is_counting_down = true
 		start_flashing()
 		enemies_remaining_label.hide()
-		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
-		if spawner and spawner.current_wave == 0:
+		#var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
+		
+		if spawner_ref and spawner_ref.current_wave == 0:
 			wave_label.text = "GET READY!"
 	else:
 		is_counting_down = false
 		enemies_remaining_label.show()
-		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
-		if spawner:
-			wave_label.text = "WAVE: " + str(spawner.current_wave)
+		#var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
+		if spawner_ref:
+			wave_label.text = "WAVE: " + str(spawner_ref.current_wave)
 		stop_flashing()
 
 func start_flashing():
