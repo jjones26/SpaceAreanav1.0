@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://do136uipj1ovd"]
+
+[ext_resource type="Script" uid="uid://ekj11kipn6p4" path="res://objects/enemy_test.gd" id="1_w3gag"]
+[ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="2_7256n"]
+[ext_resource type="PackedScene" uid="uid://8oabo4lyyi67" path="res://models/mech-1.glb" id="3_uxfpo"]
+[ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="4_57hiq"]
+[ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="5_o41g0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
+radius = 0.88471085
+
+[node name="enemy-flying-test" type="CharacterBody3D"]
+script = ExtResource("1_w3gag")
+health_pack_scene = ExtResource("2_7256n")
+
+[node name="mech-1" parent="." instance=ExtResource("3_uxfpo")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="enemy-flying" parent="." instance=ExtResource("4_57hiq")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76715326, 0)
+shape = SubResource("SphereShape3D_iix87")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 5)
+
+[node name="MuzzleA" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7153668, 0.5695296, 0.4)
+sprite_frames = ExtResource("5_o41g0")
+frame = 2
+
+[node name="MuzzleB" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.6854417, 0.5679713, 0.4)
+sprite_frames = ExtResource("5_o41g0")
+frame = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71241236, 0.31417006)
+light_color = Color(1, 0, 0, 1)
+omni_range = 0.43037003
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="enemy-flying"]
