@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var wave_label: Label = $WaveLabel
 @onready var crowd_bar: TextureProgressBar = $CrowdMeter
 @onready var health_bar: TextureProgressBar = $HealthBar
+@onready var enemies_remaining_label: Label = $EnemiesRemainingLabel
 
 
 var flash_tween: Tween
@@ -39,7 +40,9 @@ func _ready():
 	if spawner:
 		spawner.wave_changed.connect(_update_wave_display)
 		spawner.state_changed.connect(_on_spawner_state_changed)
+		spawner.enemies_remaining_changed.connect(_on_enemies_remaining_changed)
 		_update_wave_display(spawner.current_wave)
+		_on_enemies_remaining_changed(spawner.base_max_enemies)
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		#player.health_updated.connect(_on_health_updated)
@@ -47,6 +50,16 @@ func _ready():
 		_on_health_updated(player.health)
 	high_score_label.text = "High Score: " + str(GameManager.high_score)
 	score_label.text = "Eliminations: " + str(GameManager.score)
+
+
+func _on_enemies_remaining_changed(count: int):
+	if enemies_remaining_label:
+		enemies_remaining_label.text = "Enemies Left: " + str(count)
+		# Make the label "pulse" slightly when someone dies (optional juice)
+		var pulse = create_tween()
+		pulse.tween_property(enemies_remaining_label, "scale", Vector2(1.1, 1.1), 0.1)
+		pulse.tween_property(enemies_remaining_label, "scale", Vector2(1.0, 1.0), 0.1)
+
 
 func _update_wave_display(wave_number: int):
 	wave_label.text = "WAVE: " + str(wave_number)
@@ -58,11 +71,13 @@ func _on_spawner_state_changed(is_break: bool, time_left: float):
 		countdown_time = time_left
 		is_counting_down = true
 		start_flashing()
+		enemies_remaining_label.hide()
 		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
 		if spawner and spawner.current_wave == 0:
 			wave_label.text = "GET READY!"
 	else:
 		is_counting_down = false
+		enemies_remaining_label.show()
 		var spawner = get_tree().current_scene.find_child("EnemySpawnManager", true, false)
 		if spawner:
 			wave_label.text = "WAVE: " + str(spawner.current_wave)

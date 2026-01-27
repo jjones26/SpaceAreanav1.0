@@ -41,6 +41,7 @@ signal health_updated
 #dmg effect
 @onready var damage_flash: ColorRect = $CanvasLayer/DamageFlash
 @onready var damage_sound: AudioStreamPlayer3D = $DamageSound
+@onready var death_fade: ColorRect = $CanvasLayer/DeathFade
 
 
 func _ready():
