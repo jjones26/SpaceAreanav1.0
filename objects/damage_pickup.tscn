@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://du262g61xbwpw"]
+
+[ext_resource type="PackedScene" uid="uid://dtv8y2e7navkh" path="res://models/Bullets Pickup.glb" id="3_ikbm7"]
+[ext_resource type="AudioStream" uid="uid://614e2o5i7kai" path="res://sounds/pickup-sound-82314.mp3" id="3_ovfkr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4fnop"]
+radius = 0.7801267
+
+[node name="DamagePickup" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4fnop")
+
+[node name="PickupSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ovfkr")
+volume_db = -35.0
+pitch_scale = 0.5
+
+[node name="Root Scene" parent="." instance=ExtResource("3_ikbm7")]
