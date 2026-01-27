@@ -15,7 +15,9 @@ signal died
 @export var move_speed := 3.0
 @export var hover_strength := 1.0
 
-
+#drops
+@export var health_pack_scene: PackedScene 
+@export var drop_chance := 0.1 # 0.1 is 10%
 # When ready, save the initial position
 
 func _ready():
@@ -68,6 +70,7 @@ func damage(amount):
 func destroy():
 	if destroyed:
 		return
+	_attempt_loot_drop()
 	Audio.play("sounds/enemy_destroy.ogg")
 	GameManager.add_score(1)
 	GameManager.add_crowd(5.0)
@@ -75,6 +78,16 @@ func destroy():
 	destroyed = true
 	queue_free()
 # Shoot when timer hits 0
+
+func _attempt_loot_drop():
+	var roll = randf()
+	if roll <= drop_chance:
+		if health_pack_scene:
+			var loot = health_pack_scene.instantiate()
+			# Add to the root scene (or a specific 'Items' folder) 
+			# so it doesn't disappear when the enemy is freed
+			get_parent().add_child(loot)
+			loot.global_position = global_position
 
 func _on_timer_timeout():
 	raycast.force_raycast_update()
