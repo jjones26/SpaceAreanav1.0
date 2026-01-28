@@ -10,7 +10,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.88471085
 
-[node name="enemy-flying-test" type="CharacterBody3D"]
+[node name="enemy-flying-test" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w3gag")
 attack_damage = 10
 health = 400

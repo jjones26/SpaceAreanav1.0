@@ -35,6 +35,7 @@ movie_writer/mjpeg_quality=1.0
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 

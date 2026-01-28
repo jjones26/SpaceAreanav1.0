@@ -163,7 +163,7 @@ func action_shoot():
 			if !raycast.is_colliding(): continue # Don't create impact when raycast didn't hit
 			var collider = raycast.get_collider()
 			# Hitting an enemy
-			if collider.has_method("damage"):
+			if collider.has_method("damage") and collider.is_in_group("enemies"):
 				collider.damage(weapon.damage)
 			# Creating an impact animation
 			var impact = preload("res://objects/impact.tscn")

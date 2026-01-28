@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://y32d0crg4jl7"]
+
+[ext_resource type="Script" uid="uid://dke5keju8kvjh" path="res://objects/movingplatformvertical.gd" id="1_n0a3m"]
+[ext_resource type="PackedScene" uid="uid://bwgwd5ue8i2bt" path="res://models/platform.glb" id="2_ncd54"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ncd54"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eq2ot"]
+data = PackedVector3Array(-1, 0.049999997, 1, 1, 0.049999997, 1, -1, -0.049999997, 1, 1, 0.049999997, 1, 1, -0.049999997, 1, -1, -0.049999997, 1, 1, 0.049999997, -1, -1, 0.049999997, -1, 1, -0.049999997, -1, -1, 0.049999997, -1, -1, -0.049999997, -1, 1, -0.049999997, -1, 1, 0.049999997, 1, 1, 0.049999997, -1, 1, -0.049999997, 1, 1, 0.049999997, -1, 1, -0.049999997, -1, 1, -0.049999997, 1, -1, 0.049999997, -1, -1, 0.049999997, 1, -1, -0.049999997, -1, -1, 0.049999997, 1, -1, -0.049999997, 1, -1, -0.049999997, -1, 1, 0.049999997, 1, -1, 0.049999997, 1, 1, 0.049999997, -1, -1, 0.049999997, 1, -1, 0.049999997, -1, 1, 0.049999997, -1, -1, -0.049999997, 1, 1, -0.049999997, 1, -1, -0.049999997, -1, 1, -0.049999997, 1, 1, -0.049999997, -1, -1, -0.049999997, -1)
+
+[node name="MovingPlatformVertical" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+script = ExtResource("1_n0a3m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42230356, 0)
+mesh = SubResource("BoxMesh_ncd54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42230356, 0)
+shape = SubResource("ConcavePolygonShape3D_eq2ot")
+
+[node name="platform-falling" parent="AnimatableBody3D" instance=ExtResource("2_ncd54")]
