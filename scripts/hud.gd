@@ -23,7 +23,6 @@ func _on_health_updated(health):
 
 func _process(delta: float) -> void:
 	$FPSLabel.text = "FPS: " + str(Engine.get_frames_per_second())
-	
 	# Update the countdown text every frame if we are on break
 	if is_counting_down:
 		countdown_time -= delta
@@ -97,8 +96,10 @@ func stop_flashing():
 		flash_tween.kill()
 	wave_label.modulate = Color.WHITE
 
+
 func _on_high_score_updated(new_high):
 	high_score_label.text = "High Score: " + str(new_high)
+
 
 func _on_score_updated(new_score):
 	score_label.text = "Eliminations: " + str(new_score)
@@ -111,6 +112,7 @@ func _on_crowd_updated(new_value: float):
 	crowd_tween.tween_property(crowd_bar, "value", new_value, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	if new_value >= GameManager.MAX_CROWD:
 		_on_crowd_maxed()
+
 
 func _on_crowd_maxed():
 	print("CROWD IS GOING WILD!")

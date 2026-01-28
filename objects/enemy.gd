@@ -15,7 +15,6 @@ signal died
 @export var move_speed := 3.0
 @export var hover_strength := 1.0
 
-
 # When ready, save the initial position
 
 func _ready():

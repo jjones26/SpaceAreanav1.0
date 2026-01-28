@@ -64,7 +64,6 @@ func _process(delta):
 	move_and_slide()
 	# Rotation 
 	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 30), delta * 10)
-	
 	# Movement sound	
 	sound_footsteps.stream_paused = true
 	if is_on_floor():
@@ -76,7 +75,6 @@ func _process(delta):
 		Audio.play("sounds/land.ogg")
 		camera.position.y = -0.1
 	previously_floored = is_on_floor()
-
 
 # Mouse movement
 
@@ -165,12 +163,9 @@ func action_shoot():
 			if !raycast.is_colliding(): continue # Don't create impact when raycast didn't hit
 			var collider = raycast.get_collider()
 			# Hitting an enemy
-			
 			if collider.has_method("damage"):
 				collider.damage(weapon.damage)
-			
 			# Creating an impact animation
-			
 			var impact = preload("res://objects/impact.tscn")
 			var impact_instance = impact.instantiate()
 			impact_instance.play("shot")
@@ -178,7 +173,6 @@ func action_shoot():
 			impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
 			impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true)
 		var knockback = random_vec2(weapon.min_knockback, weapon.max_knockback)
-		# print('knockback', knockback)
 		container.position.z += 0.25 # Knockback of weapon visual
 		camera.rotation.x += knockback.x # Knockback of camera
 		rotation.y += knockback.y
@@ -211,17 +205,14 @@ func change_weapon():
 	for n in container.get_children():
 		container.remove_child(n)
 	# Step 2. Place new weapon model in container
-	
 	var weapon_model = weapon.model.instantiate()
 	container.add_child(weapon_model)
 	weapon_model.position = weapon.position
 	weapon_model.rotation_degrees = weapon.rotation
 	# Step 3. Set model to only render on layer 2 (the weapon camera)
-	
 	for child in weapon_model.find_children("*", "MeshInstance3D"):
 		child.layers = 2
 	# Set weapon data
-	
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
 	crosshair.texture = weapon.crosshair
 
@@ -239,7 +230,6 @@ func damage(amount):
 	if health <= 0:
 		die()
 
-
 func die() -> void:
 	if not is_inside_tree() or is_queued_for_deletion():
 		return
@@ -250,7 +240,6 @@ func die() -> void:
 	var game_over_instance = game_over_scene.instantiate()
 	get_tree().current_scene.add_child(game_over_instance)
 	queue_free()
-
 
 #healing
 func heal(amount: int) -> void:

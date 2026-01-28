@@ -10,10 +10,8 @@ var final_amplitude: float
 
 func _ready():
 	base_y = global_position.y
-
 	# Randomize jump height once
 	final_amplitude = amplitude + randf_range(-amplitude_variance, amplitude_variance)
-
 	# --- Randomize color per fan ---
 	var mat := get_active_material(0)
 	if mat:

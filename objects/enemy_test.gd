@@ -47,8 +47,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
-
 func _post_spawn_setup(spawn_position: Vector3, player_ref: Node3D):
 	global_position = spawn_position
 	player = player_ref
@@ -56,7 +54,6 @@ func _post_spawn_setup(spawn_position: Vector3, player_ref: Node3D):
 
 func _on_died_safe():
 	pass
-
 
 # Take damage from player
 
