@@ -814,6 +814,13 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -23.
 [node name="wall-high64" parent="Walls" instance=ExtResource("7_cabne")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -23.683044, 0, -22.521671)
 
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="MovingPlatformVertical" parent="MovingPlatforms" instance=ExtResource("42_2cjbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 6, 21.5)
+movement_vector = Vector3(0, 0, -43)
+speed = 1.0
+
 [node name="Boundaries" type="Node" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boundaries"]
@@ -3249,8 +3256,5 @@ sfx_list = Array[AudioStream]([ExtResource("34_5poiv"), ExtResource("35_2cjbq"),
 wait_time = 30.0
 one_shot = true
 autostart = true
-
-[node name="MovingPlatformVertical" parent="." instance=ExtResource("42_2cjbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]

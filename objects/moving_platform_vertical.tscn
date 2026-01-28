@@ -9,17 +9,16 @@ size = Vector3(2, 0.1, 2)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eq2ot"]
 data = PackedVector3Array(-1, 0.049999997, 1, 1, 0.049999997, 1, -1, -0.049999997, 1, 1, 0.049999997, 1, 1, -0.049999997, 1, -1, -0.049999997, 1, 1, 0.049999997, -1, -1, 0.049999997, -1, 1, -0.049999997, -1, -1, 0.049999997, -1, -1, -0.049999997, -1, 1, -0.049999997, -1, 1, 0.049999997, 1, 1, 0.049999997, -1, 1, -0.049999997, 1, 1, 0.049999997, -1, 1, -0.049999997, -1, 1, -0.049999997, 1, -1, 0.049999997, -1, -1, 0.049999997, 1, -1, -0.049999997, -1, -1, 0.049999997, 1, -1, -0.049999997, 1, -1, -0.049999997, -1, 1, 0.049999997, 1, -1, 0.049999997, 1, 1, 0.049999997, -1, -1, 0.049999997, 1, -1, 0.049999997, -1, 1, 0.049999997, -1, -1, -0.049999997, 1, 1, -0.049999997, 1, -1, -0.049999997, -1, 1, -0.049999997, 1, 1, -0.049999997, -1, -1, -0.049999997, -1)
 
-[node name="MovingPlatformVertical" type="Node3D"]
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+[node name="MovingPlatformVertical" type="AnimatableBody3D"]
 script = ExtResource("1_n0a3m")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42230356, 0)
 mesh = SubResource("BoxMesh_ncd54")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42230356, 0)
 shape = SubResource("ConcavePolygonShape3D_eq2ot")
 
-[node name="platform-falling" parent="AnimatableBody3D" instance=ExtResource("2_ncd54")]
+[node name="platform-falling" parent="." instance=ExtResource("2_ncd54")]
