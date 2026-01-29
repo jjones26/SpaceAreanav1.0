@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://do136uipj1ovd"]
+[gd_scene load_steps=9 format=3 uid="uid://do136uipj1ovd"]
 
 [ext_resource type="Script" uid="uid://ekj11kipn6p4" path="res://objects/enemy_test.gd" id="1_w3gag"]
 [ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="2_7256n"]
+[ext_resource type="PackedScene" uid="uid://btvqyqrn0fm1e" path="res://objects/armor_pickup.tscn" id="3_57hiq"]
 [ext_resource type="PackedScene" uid="uid://bbdqkoaawhflg" path="res://fonts/mech-tank.glb" id="3_7256n"]
 [ext_resource type="PackedScene" uid="uid://8oabo4lyyi67" path="res://models/mech-1.glb" id="3_uxfpo"]
 [ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="4_57hiq"]
@@ -12,12 +13,13 @@ radius = 0.88471085
 
 [node name="enemy-flying-test" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_w3gag")
-attack_damage = 10
 health = 400
 move_speed = 1.5
 hover_strength = 1.5
 health_pack_scene = ExtResource("2_7256n")
-drop_chance = 0.5
+drop_chance = 0.99
+armor_pack_scene = ExtResource("3_57hiq")
+armor_drop_chance = 0.99
 
 [node name="mech-tank" parent="." instance=ExtResource("3_7256n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

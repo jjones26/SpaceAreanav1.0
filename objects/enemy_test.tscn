@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dggblvgmywfuo"]
+[gd_scene load_steps=8 format=3 uid="uid://dggblvgmywfuo"]
 
 [ext_resource type="Script" uid="uid://ekj11kipn6p4" path="res://objects/enemy_test.gd" id="1_dhw63"]
 [ext_resource type="PackedScene" uid="uid://8oabo4lyyi67" path="res://models/mech-1.glb" id="2_4fbpp"]
 [ext_resource type="PackedScene" uid="uid://cu7g1e7whog5r" path="res://objects/health_pickup.tscn" id="2_a742w"]
 [ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="2_t3ktw"]
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="3_4fbpp"]
+[ext_resource type="PackedScene" uid="uid://btvqyqrn0fm1e" path="res://objects/armor_pickup.tscn" id="3_a742w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.88471085
@@ -13,6 +14,9 @@ radius = 0.88471085
 script = ExtResource("1_dhw63")
 attack_damage = 2
 health_pack_scene = ExtResource("2_a742w")
+drop_chance = 0.5
+armor_pack_scene = ExtResource("3_a742w")
+armor_drop_chance = 0.4
 
 [node name="mech-1" parent="." instance=ExtResource("2_4fbpp")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

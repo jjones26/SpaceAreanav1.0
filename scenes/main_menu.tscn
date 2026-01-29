@@ -47,13 +47,12 @@ texture = ExtResource("2_bqqt6")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 75.0
-offset_right = 475.0
-offset_bottom = 356.81702
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -376.0
+offset_right = 400.0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -64,27 +63,91 @@ layout_mode = 2
 theme = SubResource("Theme_bqqt6")
 text = "Start"
 
-[node name="MainMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_wu84c")
 text = "Credits"
+
+[node name="HighScoreButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wu84c")
+text = "High Score"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8ln24")
 text = "Quit"
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="CreditsPopup" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 256.0
-offset_top = 24.0
-offset_right = 529.0
-offset_bottom = 247.0
+offset_left = -192.0
+offset_top = -20.0
+offset_right = 128.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CreditsPopup"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 204.0
+text = "Thank you the following!
+-Godot team
+-Kenney
+-Quaternius 
+-Astronaut12
+-Pirate software and his team
+
+"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="CreditsPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -46.0
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_8ln24")
+text = "Close"
+
+[node name="HighScorePopup" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -336.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="HighScoreLabel" type="Label" parent="HighScorePopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -168.0
+offset_right = 113.0
+offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -94,6 +157,24 @@ label_settings = SubResource("LabelSettings_bqqt6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HighScoreCloseButton" type="Button" parent="HighScorePopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -46.0
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_8ln24")
+text = "Close"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HighScoreButton" to="." method="_on_high_score_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CreditsPopup/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HighScorePopup/HighScoreCloseButton" to="." method="_on_high_score_close_button_pressed"]

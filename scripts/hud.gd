@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var crowd_bar: TextureProgressBar = $CrowdMeter
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var enemies_remaining_label: Label = $EnemiesRemainingLabel
+@onready var armor_bar: TextureProgressBar = $ArmorBar
 
 var spawner_ref: Node3D = null
 var flash_tween: Tween
@@ -48,14 +49,24 @@ func _ready():
 		#player.health_updated.connect(_on_health_updated)
 		health_bar.max_value = player.max_health
 		_on_health_updated(player.health)
+		player.armor_updated.connect(_on_armor_updated)
+		armor_bar.max_value = player.max_armor
+		_on_armor_updated(player.armor)
 	high_score_label.text = "High Score: " + str(GameManager.high_score)
 	score_label.text = "Eliminations: " + str(GameManager.score)
+
+
+func _on_armor_updated(armor_value):
+		armor_bar.value = armor_value
+		#if armor_value <= 0:
+			#armor_bar.visible = false
+		#else:
+			#armor_bar.visible = true
 
 
 func _on_enemies_remaining_changed(count: int):
 	if enemies_remaining_label:
 		enemies_remaining_label.text = "Enemies Left: " + str(count)
-		# Make the label "pulse" slightly when someone dies (optional juice)
 		var pulse = create_tween()
 		pulse.tween_property(enemies_remaining_label, "scale", Vector2(1.1, 1.1), 0.1)
 		pulse.tween_property(enemies_remaining_label, "scale", Vector2(1.0, 1.0), 0.1)
@@ -64,7 +75,7 @@ func _on_enemies_remaining_changed(count: int):
 func _update_wave_display(wave_number: int):
 	wave_label.text = "WAVE: " + str(wave_number)
 	stop_flashing()
-	is_counting_down = false # Stop the timer display
+	is_counting_down = false 
 
 func _on_spawner_state_changed(is_break: bool, time_left: float):
 	if is_break:

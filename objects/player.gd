@@ -27,7 +27,11 @@ var previously_floored := false
 var jumps_remaining: int
 var container_offset = Vector3(1.2, -1.1, -2.75)
 var tween: Tween
+#armor
+var armor: int = 0
+var max_armor: int = 100
 
+signal armor_updated
 signal health_updated
 
 @onready var camera = $Head/Camera
@@ -217,8 +221,15 @@ func change_weapon():
 	crosshair.texture = weapon.crosshair
 
 func damage(amount):
-	health -= amount
-	health_updated.emit(health) # Update health on HUD
+	if armor > 0:
+		armor -= amount
+		if armor < 0:
+			health += armor
+			armor = 0
+	else:
+		health -= amount
+	armor_updated.emit(armor)
+	health_updated.emit(health) 
 	if damage_sound:
 		damage_sound.pitch_scale = randf_range(0.95, 1.05)
 		damage_sound.play()
@@ -234,6 +245,9 @@ func die() -> void:
 	if not is_inside_tree() or is_queued_for_deletion():
 		return
 	GameManager.save_high_score()
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.visible = false
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var game_over_scene = preload("res://scenes/game_over.tscn")
@@ -251,6 +265,11 @@ func upgrade_speed(multiplier: float) -> void:
 func heal(amount: int) -> void:
 	health = min(health + amount, max_health)
 	health_updated.emit(health)
+
+
+func add_armor(amount: int) -> void:
+	armor = min(armor + amount, max_armor)
+	armor_updated.emit(armor)
 
 # Create a random knockback vector
 static func random_vec2(_min: Vector2, _max: Vector2) -> Vector2:

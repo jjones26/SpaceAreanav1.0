@@ -19,8 +19,10 @@ signal died
 #drops
 @export var health_pack_scene: PackedScene 
 @export var drop_chance := 0.25 
-# When ready, save the initial position
+@export var armor_pack_scene: PackedScene 
+@export var armor_drop_chance := 0.15
 
+# When ready, save the initial position
 func _ready():
 	target_position = global_position
 	player = get_tree().get_first_node_in_group("player")
@@ -78,14 +80,20 @@ func destroy():
 # Shoot when timer hits 0
 
 func _attempt_loot_drop():
-	var roll = randf()
-	if roll <= drop_chance:
+	# Independent roll for Health Pack
+	var health_roll = randf()
+	if health_roll <= drop_chance:
 		if health_pack_scene:
-			var loot = health_pack_scene.instantiate()
-			
-			# so it doesn't disappear when the enemy is freed
-			get_parent().add_child(loot)
-			loot.global_position = global_position
+			var health_loot = health_pack_scene.instantiate()
+			get_parent().add_child(health_loot)
+			health_loot.global_position = global_position + Vector3(-0.5, 0, 0)
+	# Independent roll for Armor Pack
+	var armor_roll = randf()
+	if armor_roll <= armor_drop_chance:
+		if armor_pack_scene:
+			var armor_loot = armor_pack_scene.instantiate()
+			get_parent().add_child(armor_loot)
+			armor_loot.global_position = global_position + Vector3(0.5, 0, 0)
 
 func _on_timer_timeout():
 	raycast.force_raycast_update()
