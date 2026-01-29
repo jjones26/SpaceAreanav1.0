@@ -18,7 +18,7 @@ signal died
 
 #drops
 @export var health_pack_scene: PackedScene 
-@export var drop_chance := 0.1 # 0.1 is 10%
+@export var drop_chance := 0.25 
 # When ready, save the initial position
 
 func _ready():
@@ -82,7 +82,7 @@ func _attempt_loot_drop():
 	if roll <= drop_chance:
 		if health_pack_scene:
 			var loot = health_pack_scene.instantiate()
-			# Add to the root scene (or a specific 'Items' folder) 
+			
 			# so it doesn't disappear when the enemy is freed
 			get_parent().add_child(loot)
 			loot.global_position = global_position
