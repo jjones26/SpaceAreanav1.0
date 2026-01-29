@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0jbqvtqtiijv"]
+[gd_scene load_steps=5 format=3 uid="uid://b0jbqvtqtiijv"]
 
+[ext_resource type="Script" uid="uid://c6djqy866qo8p" path="res://objects/speed_pickup.gd" id="1_2x71x"]
 [ext_resource type="PackedScene" uid="uid://cmet36n33vxpy" path="res://models/Pickup Thunder.glb" id="2_2x71x"]
 [ext_resource type="AudioStream" uid="uid://614e2o5i7kai" path="res://sounds/pickup-sound-82314.mp3" id="3_5xk0v"]
 
@@ -7,6 +8,7 @@
 radius = 0.7801267
 
 [node name="SpeedPickup" type="Area3D"]
+script = ExtResource("1_2x71x")
 
 [node name="Root Scene" parent="." instance=ExtResource("2_2x71x")]
 
@@ -17,3 +19,5 @@ shape = SubResource("SphereShape3D_4fnop")
 stream = ExtResource("3_5xk0v")
 volume_db = -35.0
 pitch_scale = 0.5
+
+[editable path="Root Scene"]

@@ -241,6 +241,12 @@ func die() -> void:
 	get_tree().current_scene.add_child(game_over_instance)
 	queue_free()
 
+
+# Add this to your player script
+func upgrade_speed(multiplier: float) -> void:
+	movement_speed *= multiplier
+	print("New permanent speed: ", movement_speed)
+
 #healing
 func heal(amount: int) -> void:
 	health = min(health + amount, max_health)
