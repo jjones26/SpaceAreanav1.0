@@ -53,6 +53,13 @@ theme_override_fonts/font = ExtResource("2_myx47")
 theme_override_font_sizes/font_size = 32
 text = "Return to Main Menu"
 
+[node name="SettingsButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myx47")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
 [node name="RestartButton" type="Button" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_myx47")
@@ -67,5 +74,6 @@ text = "Quit"
 
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

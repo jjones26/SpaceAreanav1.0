@@ -25,3 +25,8 @@ func _on_quit_button_pressed() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): 
 		_on_resume_button_pressed()
+
+
+func _on_settings_button_pressed() -> void:
+	pass
+	#credits_popup.visible = false
